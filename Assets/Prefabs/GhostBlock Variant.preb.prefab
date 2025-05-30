@@ -9,12 +9,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2007744956042366492, guid: 694f6af8a2fb64169b7765ed2adcff8a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007744956042366492, guid: 694f6af8a2fb64169b7765ed2adcff8a, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2034494438478811705, guid: 694f6af8a2fb64169b7765ed2adcff8a, type: 3}
       propertyPath: m_Name
-      value: GhostBlock Variant
+      value: GhostBlock Variant.preb
       objectReference: {fileID: 0}
     - target: {fileID: 7294478922801516414, guid: 694f6af8a2fb64169b7765ed2adcff8a, type: 3}
       propertyPath: m_LocalPosition.x
