@@ -1,0 +1,395 @@
+Using pre-set license
+Built from '6000.0/staging' branch; Version is '6000.0.47f1 (2ad1ed33fd3b) revision 2806253'; Using compiler version '193933523'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26100) 64bit Professional' Language: 'tr' Physical Memory: 16002 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.0.47f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker1
+-projectPath
+C:/Users/rojbi/OneDrive/Desktop/Games/escape-from-triasol
+-logFile
+Logs/AssetImportWorker1.log
+-srvPort
+57920
+-job-worker-count
+5
+-background-job-worker-count
+8
+-gc-helper-count
+1
+Successfully changed project path to: C:/Users/rojbi/OneDrive/Desktop/Games/escape-from-triasol
+C:/Users/rojbi/OneDrive/Desktop/Games/escape-from-triasol
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [21012]  Target information:
+
+Player connection [21012]  * "[IP] 10.145.0.99 [Port] 0 [Flags] 2 [Guid] 3689257001 [EditorId] 3689257001 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-T32HQPE) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [21012] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [21012] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 5
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 1.40 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.47f1 (2ad1ed33fd3b)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.0.47f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/rojbi/OneDrive/Desktop/Games/escape-from-triasol/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Intel(R) UHD Graphics (ID=0x4628)
+    Vendor:   Intel
+    VRAM:     8001 MB
+    Driver:   31.0.101.4255
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.0.47f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.0.47f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.0.47f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56712
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.47f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003296 seconds.
+- Loaded All Assemblies, in  0.457 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.569 seconds
+Domain Reload Profiling: 1024ms
+	BeginReloadAssembly (126ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (36ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (73ms)
+	LoadAllAssembliesAndSetupDomain (202ms)
+		LoadAssemblies (123ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (199ms)
+			TypeCache.Refresh (196ms)
+				TypeCache.ScanAssembly (178ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (570ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (506ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (29ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (89ms)
+			ProcessInitializeOnLoadAttributes (285ms)
+			ProcessInitializeOnLoadMethodAttributes (96ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+========================================================================
+Worker process is ready to serve import requests
+Import Worker Mode flag is 0x00
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.143 seconds
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 1.47 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Package Manager log level set to [2]
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.124 seconds
+Domain Reload Profiling: 2265ms
+	BeginReloadAssembly (230ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (37ms)
+	RebuildCommonClasses (42ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (54ms)
+	LoadAllAssembliesAndSetupDomain (802ms)
+		LoadAssemblies (558ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (389ms)
+			TypeCache.Refresh (273ms)
+				TypeCache.ScanAssembly (244ms)
+			BuildScriptInfoCaches (96ms)
+			ResolveRequiredComponents (14ms)
+	FinalizeReload (1125ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (920ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (169ms)
+			ProcessInitializeOnLoadAttributes (582ms)
+			ProcessInitializeOnLoadMethodAttributes (155ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+Refreshing native plugins compatible for Editor in 3.35 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 222 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7025 unused Assets / (5.1 MB). Loaded Objects now: 7737.
+Memory consumption went from 180.7 MB to 175.6 MB.
+Total: 14.157300 ms (FindLiveObjects: 1.444700 ms CreateObjectMapping: 1.179200 ms MarkObjects: 6.640000 ms  DeleteObjects: 4.888600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 223784.603167 seconds.
+  path: Assets/Artboard 212.png
+  artifactKey: Guid(c5376dd5e144f4fa2982f8e3a368e15b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Artboard 212.png using Guid(c5376dd5e144f4fa2982f8e3a368e15b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '96754b5247d4414bedb86f6065f7f775') in 0.1446347 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Square.asset
+  artifactKey: Guid(aea3f39f931f8482f868d9384e214796) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Square.asset using Guid(aea3f39f931f8482f868d9384e214796) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a9ceaa6ae25d0017e491e5bbf58fe9ce') in 0.0533728 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/UniversalRenderPipelineGlobalSettings.asset
+  artifactKey: Guid(93b439a37f63240aca3dd4e01d978a9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UniversalRenderPipelineGlobalSettings.asset using Guid(93b439a37f63240aca3dd4e01d978a9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '980c9fb80c82845b153ecd392cc4695d') in 0.0012457 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000049 seconds.
+  path: Assets/WhiteSprite.png
+  artifactKey: Guid(2541234916d054efeb22915f934001b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WhiteSprite.png using Guid(2541234916d054efeb22915f934001b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0f2ab493c1ec45c0257c667f0cac16e6') in 0.0241991 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/FogFadeMaterial.mat
+  artifactKey: Guid(7b78466c9d3b24562a28a323a1bdc231) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FogFadeMaterial.mat using Guid(7b78466c9d3b24562a28a323a1bdc231) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '13c02c34857b9b1d2b50d5cd5e7a6ed3') in 0.6423008 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 54.100842 seconds.
+  path: Assets/GearIcons/Icon14_02.png
+  artifactKey: Guid(f11239505e5e65a46af8a0c601b367f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_02.png using Guid(f11239505e5e65a46af8a0c601b367f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8e8b7044d9b01336275cc81e8ea5b3e6') in 0.0265045 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/GearIcons/Icon14_28.png
+  artifactKey: Guid(2b67c0d80e31a9c4daa478aa04ac417f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_28.png using Guid(2b67c0d80e31a9c4daa478aa04ac417f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '525a885c8ef9a35c17ede9dce7361e54') in 0.0243419 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/GearIcons/Icon14_40.png
+  artifactKey: Guid(4c0de2d55b1238946bfdc5591d46ce5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_40.png using Guid(4c0de2d55b1238946bfdc5591d46ce5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4100db8010f400c75a3ca245babd054a') in 0.0231474 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/GearIcons/Icon14_27.png
+  artifactKey: Guid(1cddfd37570bd104b80ea1c751442ad8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_27.png using Guid(1cddfd37570bd104b80ea1c751442ad8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd1c13bf98470b829091f7e8abf8ccddc') in 0.0307585 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/GearIcons/Icon14_09.png
+  artifactKey: Guid(d2a1789a8ce83ec4aa3926696a57497a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_09.png using Guid(d2a1789a8ce83ec4aa3926696a57497a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '106fcfae66422d37ec3aba4932e7dbac') in 0.0223906 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/GearIcons/Icon14_07.png
+  artifactKey: Guid(ddbaf132c68fa3b4ab25060400299b60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_07.png using Guid(ddbaf132c68fa3b4ab25060400299b60) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd40c2f5951f03fd85cff464ef716a211') in 0.0219195 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/GearIcons/Icon14_03.png
+  artifactKey: Guid(ce290a49b9fcccf4580a0079fea8610e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_03.png using Guid(ce290a49b9fcccf4580a0079fea8610e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7ea3e114bd30fc87b55b3fc493e20481') in 0.0242663 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/GearIcons/Icon14_31.png
+  artifactKey: Guid(79746bb4769a35c4f90e4088c11d9d2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_31.png using Guid(79746bb4769a35c4f90e4088c11d9d2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bda3b907003ea2678adc2bd3c1f95d31') in 0.023148 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/GearIcons/Icon14_22.png
+  artifactKey: Guid(bb0dd120db9901240be4f9b8552e7897) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_22.png using Guid(bb0dd120db9901240be4f9b8552e7897) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'acec408d8b6c80d556b2307675490cd5') in 0.0250816 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/GearIcons/Icon14_13.png
+  artifactKey: Guid(20be30c2062601645b3a0354d7385951) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_13.png using Guid(20be30c2062601645b3a0354d7385951) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '21e562dff8680fd5d1863665eefc7a78') in 0.0246413 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/GearIcons/Icon14_38.png
+  artifactKey: Guid(a76e84fd097cbbe46a20f20ea6058031) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_38.png using Guid(a76e84fd097cbbe46a20f20ea6058031) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4d5d2be0889354ef9f8b9008404d8472') in 0.0208239 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/GearIcons/Icon14_30.png
+  artifactKey: Guid(18770a8283eee05409172eb77033bd45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_30.png using Guid(18770a8283eee05409172eb77033bd45) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3332e670cd9ee0c81aa53159fad59da4') in 0.0193987 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/GearIcons/Icon14_11.png
+  artifactKey: Guid(be62d0be39486ca45ab771c3b6d79fd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_11.png using Guid(be62d0be39486ca45ab771c3b6d79fd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3b9ac756913b963e4b0507b360e78df3') in 0.034724 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 5
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/GearIcons/Icon14_12.png
+  artifactKey: Guid(24ce9a35202768b4697d2111be5bf62f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_12.png using Guid(24ce9a35202768b4697d2111be5bf62f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bd654eae4a5b54f1512a7205bedd90f3') in 0.0232579 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/GearIcons/Icon14_29.png
+  artifactKey: Guid(58228ee6532fbbb4dbe70ff9e43aebdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_29.png using Guid(58228ee6532fbbb4dbe70ff9e43aebdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '75a8247c1041ce566c17475f1a4cc78a') in 0.0236975 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/GearIcons/Icon14_34.png
+  artifactKey: Guid(78bcb6a24eeb1b04298f7a133fcae26d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_34.png using Guid(78bcb6a24eeb1b04298f7a133fcae26d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b96a40e5a3587e0e12d90ab3279dfcfb') in 0.0215788 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/GearIcons/Icon14_04.png
+  artifactKey: Guid(0691df544eeac2b4185f3136abc04e1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_04.png using Guid(0691df544eeac2b4185f3136abc04e1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a3c010e125284e445f4abce8d4da1bdd') in 0.0220695 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/GearIcons/Icon14_19.png
+  artifactKey: Guid(680dd3e06d42e294489834bffe155ef2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_19.png using Guid(680dd3e06d42e294489834bffe155ef2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4e59edb58f0cf00d450407ba9e63c696') in 0.0262294 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/GearIcons/Icon14_25.png
+  artifactKey: Guid(15a56e89ac05a5342aabc6f3a67b4747) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_25.png using Guid(15a56e89ac05a5342aabc6f3a67b4747) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ec8a4d09f609e1deef641cd82f7413e1') in 0.0225644 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/GearIcons/Icon14_16.png
+  artifactKey: Guid(adacf428b5f448b4f8b6a17b926f23b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GearIcons/Icon14_16.png using Guid(adacf428b5f448b4f8b6a17b926f23b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '014e0cc0189ffe4f1925d6c923da9daa') in 0.0282338 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
