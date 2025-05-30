@@ -21,7 +21,13 @@ public class BuildManager : MonoBehaviour
         {
             if (InventoryManager.Instance.TrySpendGear(5))
             {
-                Instantiate(blockPrefab, snapped, Quaternion.identity);
+                // Rotation'ı ghost üzerinden al
+                Quaternion rotation = Quaternion.identity;
+                var ghostScript = ghostInstance.GetComponent<GhostBlockController>();
+                if (ghostScript != null)
+                    rotation = ghostScript.GetCurrentRotation();
+
+                Instantiate(blockPrefab, snapped, rotation);
             }
             else
             {
