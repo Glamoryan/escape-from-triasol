@@ -207,6 +207,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1059,7 +1072,45 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Asset 8_0: -4087377375887406748
+      Asset 8_1: 7145612119777547339
+      Asset 8_10: -6496975063700910088
+      Asset 8_11: 4231484256638253442
+      Asset 8_12: -4257559211752863503
+      Asset 8_13: -2401354858121004761
+      Asset 8_14: 1794929332569019041
+      Asset 8_15: -1416233279705855101
+      Asset 8_16: 8100831821705729156
+      Asset 8_17: 8656062213943395314
+      Asset 8_18: -4326701388072257156
+      Asset 8_19: 5953113765350721475
+      Asset 8_2: 1817978925868486923
+      Asset 8_20: 2891454955126707419
+      Asset 8_21: 5044967160421831576
+      Asset 8_22: -9039879856620371431
+      Asset 8_23: -8140114692420389060
+      Asset 8_24: -7209185067538945155
+      Asset 8_25: -658986508176849213
+      Asset 8_26: -7874683137556593300
+      Asset 8_27: -5899536340548642969
+      Asset 8_28: 5352349210137435066
+      Asset 8_29: -2205022019761282202
+      Asset 8_3: 8861366583953244256
+      Asset 8_30: -5031143022775183535
+      Asset 8_31: 7290714274866352587
+      Asset 8_32: -8047636756190424624
+      Asset 8_33: -4415812752277468746
+      Asset 8_34: 8352579866650165937
+      Asset 8_35: -3643858640350142789
+      Asset 8_36: -4654748835408143303
+      Asset 8_37: 6602668914669793356
+      Asset 8_4: 4402772291393339809
+      Asset 8_5: -4816225764154658234
+      Asset 8_6: 2208695106660384752
+      Asset 8_7: -1469149237360091398
+      Asset 8_8: 9106936324512012351
+      Asset 8_9: -4258148722743292424
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

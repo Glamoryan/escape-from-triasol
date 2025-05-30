@@ -1,9 +1,12 @@
 using UnityEngine;
+using System;
 
 public class Health : MonoBehaviour
 {
     public float maxHealth = 100f;
     public GameObject healthBarPrefab;
+
+    public event Action OnDeath;
 
     private float currentHealth;
     private HealthBar healthBar;
@@ -28,6 +31,7 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            OnDeath?.Invoke();
             Destroy(gameObject);
         }
     }

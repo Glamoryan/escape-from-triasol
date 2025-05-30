@@ -3,6 +3,7 @@ using System;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Health))]
 public class Enemy : MonoBehaviour
 {
     public GameObject bulletPrefab;
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
     private float shotTimer;
     private float cooldownTimer;
     private bool isBursting = false;
+    private Health health;
 
     private Rigidbody2D rb;
 
@@ -36,6 +38,51 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
         rb.freezeRotation = true;
+
+        health = GetComponent<Health>();
+        if (health != null)
+        {
+            health.OnDeath += Die;
+        }
+    }
+
+    void Die()
+    {
+        // Gear düşürme şansı ve kontrolü
+        if (gearPrefab != null)
+        {
+            // %50 şansla gear düşür
+            if (UnityEngine.Random.value <= 0.5f)
+            {
+                // Gear'ı düşmanın pozisyonunda oluştur
+                GameObject gear = Instantiate(gearPrefab, transform.position, Quaternion.identity);
+                
+                // Gear'ın layer'ını ayarla
+                gear.layer = LayerMask.NameToLayer("Gear");
+                
+                // Gear'a tag ekle
+                gear.tag = "Item";
+                
+                // Rigidbody2D ekle ve ayarla
+                Rigidbody2D rb = gear.GetComponent<Rigidbody2D>();
+                if (rb == null)
+                {
+                    rb = gear.AddComponent<Rigidbody2D>();
+                }
+                rb.gravityScale = 0f;
+                rb.isKinematic = true;
+                
+                // Collider2D ekle ve ayarla
+                Collider2D col = gear.GetComponent<Collider2D>();
+                if (col == null)
+                {
+                    col = gear.AddComponent<CircleCollider2D>();
+                }
+                col.isTrigger = true;
+            }
+        }
+
+        OnDeath?.Invoke();
     }
 
     void FixedUpdate()
@@ -120,16 +167,4 @@ public class Enemy : MonoBehaviour
             transform.position += (Vector3)(escapeDir * 0.5f);
         }
     }
-
-    void OnDestroy()
-    {
-    // Drop gear with 50% chance
-    if (gearPrefab != null && UnityEngine.Random.value <= 0.5f)
-    {
-        Instantiate(gearPrefab, transform.position, Quaternion.identity);
-    }
-
-    OnDeath?.Invoke();
-    }
-
 }

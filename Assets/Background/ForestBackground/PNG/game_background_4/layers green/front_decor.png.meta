@@ -153,6 +153,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -609,7 +622,27 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      front_decor_0: 5587059694676569218
+      front_decor_1: 6336856178732147319
+      front_decor_10: -9007209084698020900
+      front_decor_11: -4259682345757865991
+      front_decor_12: 4396546064318019316
+      front_decor_13: -3493707058904757401
+      front_decor_14: 8431406151415060076
+      front_decor_15: -6966916063818043903
+      front_decor_16: -8944910882872377877
+      front_decor_17: 3917287668641208774
+      front_decor_18: -4412326448244746409
+      front_decor_19: -4307958793336635114
+      front_decor_2: -7901515051651047030
+      front_decor_3: -7652739207034657796
+      front_decor_4: -3758348082219442478
+      front_decor_5: 100487703024216509
+      front_decor_6: 8046316498222940321
+      front_decor_7: -4931262891500079257
+      front_decor_8: 5347991333010567337
+      front_decor_9: -7423394445118654433
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
