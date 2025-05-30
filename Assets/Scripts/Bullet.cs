@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     [HideInInspector] public Vector2 direction;
     [HideInInspector] public GameObject owner;
 
-    void Start()
+    private void Start()
     {
         Destroy(gameObject, lifetime);
     }
@@ -25,12 +25,11 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject == owner)
             return;
 
-        Health health = collision.GetComponent<Health>();
-        if (health != null)
-        {
-            health.TakeDamage(damage);
-        }
-
-        Destroy(gameObject);
+            Health health = collision.GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+            }
+            Destroy(gameObject);
     }
 }

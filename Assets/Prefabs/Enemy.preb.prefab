@@ -109,9 +109,9 @@ MonoBehaviour:
   target: {fileID: 0}
   gearPrefab: {fileID: 3551097080011753414, guid: a5e49db1553baf344a70cc8a93ccf45d, type: 3}
   attackRange: 6
-  stopDistance: 3
-  slowSpeed: 2
-  fastSpeed: 4
+  stopDistance: 6
+  slowSpeed: 1
+  fastSpeed: 2
   burstCount: 3
   timeBetweenShots: 0.2
   burstCooldown: 1.5
