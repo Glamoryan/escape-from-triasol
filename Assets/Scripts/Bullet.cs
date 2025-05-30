@@ -6,7 +6,8 @@ public class Bullet : MonoBehaviour
     public float damage = 25f;
     public float lifetime = 5f;
 
-    public Vector2 direction;
+    [HideInInspector] public Vector2 direction;
+    [HideInInspector] public GameObject owner;
 
     void Start()
     {
@@ -15,11 +16,15 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(direction.normalized * speed * Time.deltaTime);
+        if (direction != Vector2.zero)
+            transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject == owner)
+            return;
+
         Health health = collision.GetComponent<Health>();
         if (health != null)
         {
