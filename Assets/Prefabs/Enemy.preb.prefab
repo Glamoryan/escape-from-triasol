@@ -107,6 +107,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4462304335854365933, guid: c71f1d84bffc44b5d86b60463222ab71, type: 3}
   firePoint: {fileID: 3563084899119870088}
   target: {fileID: 0}
+  gearPrefab: {fileID: 3551097080011753414, guid: a5e49db1553baf344a70cc8a93ccf45d, type: 3}
   attackRange: 6
   stopDistance: 6
   slowSpeed: 1

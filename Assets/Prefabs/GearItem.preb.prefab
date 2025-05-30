@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8167658601889450872}
-  - component: {fileID: 2824509264668674601}
-  - component: {fileID: 2473412629434621847}
-  m_Layer: 9
+  - component: {fileID: 6264564401972215546}
+  - component: {fileID: 2133232143156563478}
+  - component: {fileID: 2543616258497637567}
+  m_Layer: 0
   m_Name: GearItem.preb
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2473412629434621847
+--- !u!61 &2543616258497637567
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
