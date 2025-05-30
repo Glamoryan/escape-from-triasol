@@ -4,11 +4,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float sprintSpeed = 8f;
+    public float energyCostPerSecond = 20f;
     public bool facingRight = true;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private SpriteRenderer spriteRenderer;
+    private bool isSprinting;
 
     void Start()
     {
@@ -22,33 +25,41 @@ public class PlayerController : MonoBehaviour
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput.Normalize();
 
-        // Yatay hareket varsa karakterin yönünü değiştir
         if (moveInput.x != 0)
         {
             FlipCharacter(moveInput.x > 0);
+        }
+
+        // Koşma kontrolü
+        isSprinting = Input.GetKey(KeyCode.LeftShift) && moveInput != Vector2.zero;
+        if (isSprinting && EnergyBar.Instance != null)
+        {
+            float energyCost = energyCostPerSecond * Time.deltaTime;
+            if (!EnergyBar.Instance.TryUseEnergy(energyCost))
+            {
+                isSprinting = false;
+            }
         }
     }
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+        float currentSpeed = isSprinting ? sprintSpeed : moveSpeed;
+        rb.MovePosition(rb.position + moveInput * currentSpeed * Time.fixedDeltaTime);
     }
 
     void FlipCharacter(bool faceRight)
     {
-        // Eğer mevcut yön ile istenen yön aynı değilse
         if (facingRight != faceRight)
         {
             facingRight = faceRight;
             
-            // SpriteRenderer varsa onu kullan
             if (spriteRenderer != null)
             {
                 spriteRenderer.flipX = !facingRight;
             }
             else
             {
-                // Yoksa transform'u kullan
                 Vector3 scale = transform.localScale;
                 scale.x *= -1;
                 transform.localScale = scale;

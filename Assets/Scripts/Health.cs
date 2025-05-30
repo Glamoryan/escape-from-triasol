@@ -17,8 +17,16 @@ public class Health : MonoBehaviour
 
         if (healthBarPrefab != null)
         {
-            Vector3 offsetPos = transform.position + Vector3.up * 0.5f;
-            GameObject bar = Instantiate(healthBarPrefab, offsetPos, Quaternion.identity, transform);
+            // Bar'ı objeye child olarak instantiate et
+            GameObject bar = Instantiate(healthBarPrefab, transform);
+
+            // Sabit pozisyonla biraz yukarı yerleştir
+            bar.transform.localPosition = new Vector3(0, 1f, 0);
+
+            // Bar'ın scale'ini prefab'takiyle aynı tut
+            bar.transform.localScale = Vector3.one;
+
+            // Bileşeni al ve başlangıç değerini ayarla
             healthBar = bar.GetComponent<HealthBar>();
             healthBar.SetMaxHealth(maxHealth);
         }
