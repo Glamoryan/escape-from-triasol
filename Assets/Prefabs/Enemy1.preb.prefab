@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4637181253700522}
   - component: {fileID: 212456842023596010}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4299932833875136}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bone_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4624528866408454}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bone_006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4203807363511210}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bone_007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 4870238150847112}
   - component: {fileID: 212797188521510632}
   - component: {fileID: 1104661116403884071}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Face 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4140340178236988}
   - component: {fileID: 212633200651717820}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4656087158542058}
   - component: {fileID: 212778216090833228}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SlashFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4672349039211972}
   - component: {fileID: 212192375710931290}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,7 +563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4653709891178514}
   - component: {fileID: 212805653507007528}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4366190219065152}
   - component: {fileID: 212633572634965968}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,7 +736,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4450951824641472}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bone_003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -770,7 +770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4872449583645804}
   - component: {fileID: 212050808313878354}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -856,7 +856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4982722288463560}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bone_005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -889,7 +889,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4714474340952668}
   - component: {fileID: 212382012024958036}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -979,9 +979,9 @@ GameObject:
   - component: {fileID: -9148472999811038837}
   - component: {fileID: 2158200180516255847}
   - component: {fileID: -5950138993434040315}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy1.preb
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1091,7 +1091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e30f4d89f6c8b47648d32663837dbf4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 4462304335854365933, guid: 6e5bb21fefd214e9699c510f7eacfca2, type: 3}
+  bulletPrefab: {fileID: 3468615179557782323, guid: d6980b80970de4fb1b7855729ea87180, type: 3}
   firePoint: {fileID: 3527543998738191468}
   target: {fileID: 0}
   gearPrefab: {fileID: 173735053818013415, guid: e62bce33f63d546d0958089b1bcf63f6, type: 3}
@@ -1099,9 +1099,9 @@ MonoBehaviour:
   stopDistance: 5
   slowSpeed: 1
   fastSpeed: 2
-  burstCount: 3
-  timeBetweenShots: 1
-  burstCooldown: 2
+  burstCount: 1
+  timeBetweenShots: 0.5
+  burstCooldown: 1
 --- !u!114 &-5950138993434040315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9fa1f204a4a4872b4e68ff3ae01794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 250
   healthBarPrefab: {fileID: 6570468480104414671, guid: 423f2d5e1662d4dcdb6167d1271d5593, type: 3}
 --- !u!1 &1717715502673098
 GameObject:
@@ -1126,7 +1126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4278003863428476}
   - component: {fileID: 212560474316862698}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1212,7 +1212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4180503365034762}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bone_000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1245,7 +1245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4700779641042720}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bone_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1278,7 +1278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4645756688060500}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bone_004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1311,7 +1311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4450641240585490}
   - component: {fileID: 212739071759090908}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
