@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
@@ -16,6 +17,8 @@ public class Enemy : MonoBehaviour
     public int burstCount = 3;
     public float timeBetweenShots = 0.2f;
     public float burstCooldown = 1.5f;
+
+    public Action OnDeath;
 
     private int shotsLeftInBurst;
     private float shotTimer;
@@ -111,8 +114,14 @@ public class Enemy : MonoBehaviour
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("Block"))
         {
-            Vector2 escapeDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+            Vector2 escapeDir = new Vector2(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)).normalized;
+
             transform.position += (Vector3)(escapeDir * 0.5f);
         }
+    }
+
+    void OnDestroy()
+    {
+        OnDeath?.Invoke();
     }
 }
