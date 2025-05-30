@@ -15,6 +15,7 @@ public class EnemySpawner : MonoBehaviour
     public int maxEnemies = 20;
 
     private Transform player;
+    private int currentEnemyCount = 0;
 
     void Start()
     {
@@ -25,14 +26,20 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy()
     {
         if (enemyTypes.Length == 0 || player == null) return;
-
-        int currentEnemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
         if (currentEnemyCount >= maxEnemies) return;
 
-        Vector2 spawnDir = Random.insideUnitCircle.normalized;
+        Vector2 spawnDir = UnityEngine.Random.insideUnitCircle.normalized;
         Vector2 spawnPos = (Vector2)player.position + spawnDir * spawnDistance;
 
-        EnemyType chosen = enemyTypes[Random.Range(0, enemyTypes.Length)];
-        Instantiate(chosen.prefab, spawnPos, Quaternion.identity);
+        EnemyType chosen = enemyTypes[UnityEngine.Random.Range(0, enemyTypes.Length)];
+        GameObject enemyObj = Instantiate(chosen.prefab, spawnPos, Quaternion.identity);
+
+        Enemy enemyScript = enemyObj.GetComponent<Enemy>();
+        if (enemyScript != null)
+        {
+            enemyScript.OnDeath = () => currentEnemyCount--;
+        }
+
+        currentEnemyCount++;
     }
 }
