@@ -63,11 +63,17 @@ public class Turret2D : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Bullet2D bullet = bulletGO.GetComponent<Bullet2D>();
+        if (bulletPrefab == null || firePoint == null || target == null) return;
 
+        Vector2 dir = (target.position - firePoint.position).normalized;
+        GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null)
-            bullet.Seek(target);
+        {
+            bullet.direction = dir;
+            bullet.owner = gameObject;
+        }
     }
 
     void OnDrawGizmosSelected()
