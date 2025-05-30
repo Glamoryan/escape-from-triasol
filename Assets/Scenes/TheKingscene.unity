@@ -1340,12 +1340,6 @@ MonoBehaviour:
   enemyTypes:
   - name: Rifle Man
     prefab: {fileID: 1167212163858274822, guid: f017003720b604c55b81b969de7d7670, type: 3}
-  - name: Ice Golem
-    prefab: {fileID: 1714274998676182, guid: 98e0791ddb0476f4cac1c32f6a3ec206, type: 3}
-  - name: Earth Golem
-    prefab: {fileID: 1475286338648080, guid: 574470aee4042ed4e996683a29267ee0, type: 3}
-  - name: Dark Golem
-    prefab: {fileID: 1632069410589986, guid: 741e43c00d731114bb3bd2508134e816, type: 3}
   player: {fileID: 0}
   spawnDistance: 30
   spawnInterval: 1
