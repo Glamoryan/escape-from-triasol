@@ -113,8 +113,8 @@ MonoBehaviour:
   slowSpeed: 1
   fastSpeed: 2
   burstCount: 3
-  timeBetweenShots: 1
-  burstCooldown: 2
+  timeBetweenShots: 0.2
+  burstCooldown: 1.5
 --- !u!114 &4664462337921273498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +129,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBarPrefab: {fileID: 6570468480104414671, guid: 423f2d5e1662d4dcdb6167d1271d5593, type: 3}
-  healthBarOffset: {x: 0, y: 0.5, z: 0}
 --- !u!50 &223592177564043646
 Rigidbody2D:
   serializedVersion: 5
