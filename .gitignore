@@ -1,20 +1,18 @@
-!Assets/
-!Assets/**/*.meta
-!ProjectSettings/
-!Packages/
-!Packages/manifest.json
-!Packages/packages-lock.json
+Library/
+Temp/
+Logs/
+Obj/
+.vs/
 
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-.DS_Store
+# Unity specific files
 *.csproj
 *.sln
-*.user
+*.userprefs
 *.pidb
-*.pdb
-*.mdb
-*.opendb
+*.suo
+*.tmp
+*.bak
+*.orig
+*.swp
+
+Build/ 
