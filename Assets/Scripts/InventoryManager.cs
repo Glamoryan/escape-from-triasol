@@ -1,18 +1,23 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
-
-    public int gearCount = 0;
     public TMP_Text gearText;
+    private int gearCount = 0;
 
-    void Awake()
+    void Awake() => Instance = this;
+
+    public bool TrySpendGear(int amount)
     {
-        Instance = this;
-        UpdateUI();
+        if (gearCount >= amount)
+        {
+            gearCount -= amount;
+            UpdateUI();
+            return true;
+        }
+        return false;
     }
 
     public void AddGear(int amount)
