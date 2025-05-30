@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
     public Transform target;
+    public GameObject gearPrefab;
     public float attackRange = 4f;
     public float stopDistance = 1.5f;
     public float slowSpeed = 3f;
@@ -122,6 +123,13 @@ public class Enemy : MonoBehaviour
 
     void OnDestroy()
     {
-        OnDeath?.Invoke();
+    // Drop gear with 50% chance
+    if (gearPrefab != null && UnityEngine.Random.value <= 0.5f)
+    {
+        Instantiate(gearPrefab, transform.position, Quaternion.identity);
     }
+
+    OnDeath?.Invoke();
+    }
+
 }
