@@ -725,6 +725,7 @@ Transform:
   - {fileID: 4923196661107686}
   - {fileID: 4667578224640484}
   - {fileID: 292755446803300017}
+  - {fileID: 6683308997660412122}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &5275239814178920170
@@ -761,7 +762,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.1195029, y: 2.6360884}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -771,7 +772,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.6009405, y: 5.3442745}
   m_EdgeRadius: 0
 --- !u!50 &-4751414590543811203
 Rigidbody2D:
@@ -813,7 +814,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  healthBarPrefab: {fileID: 6570468480104414671, guid: 423f2d5e1662d4dcdb6167d1271d5593, type: 3}
   regenDelay: 3
   regenRate: 10
 --- !u!114 &5810957237656275512
@@ -1421,6 +1421,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4637610042664906}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &392475876261628950
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4637610042664906}
+    m_Modifications:
+    - target: {fileID: 1705857078969628317, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+      propertyPath: m_Name
+      value: HealthBar.preb
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471031259664778444, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471031259664778444, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471031259664778444, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471031259664778444, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471031259664778444, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471031259664778444, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471031259664778444, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471031259664778444, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471031259664778444, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471031259664778444, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+--- !u!4 &6683308997660412122 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6471031259664778444, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+  m_PrefabInstance: {fileID: 392475876261628950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!74 &74018856050503202
 AnimationClip:
   m_ObjectHideFlags: 0
