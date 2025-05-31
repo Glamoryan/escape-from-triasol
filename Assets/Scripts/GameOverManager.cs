@@ -34,7 +34,12 @@ public class GameOverManager : MonoBehaviour
     public TextMeshProUGUI gameOverText;
     public CanvasGroup canvasGroup;
     public float fadeInDuration = 1f;
-    public float typingSpeed = 0.04f;
+    public float typingSpeed = 0.05f;
+    public float delayBeforeRestart = 3f;
+
+    [Header("Solar Flare Effect")]
+    public GameObject solarFlareEffectPrefab;
+    public Animator solarFlareAnimator;
 
     private bool isGameOver = false;
 
@@ -75,13 +80,79 @@ public class GameOverManager : MonoBehaviour
         if (isGameOver) return;
         isGameOver = true;
 
-        string message = GetGameOverMessage(type);
-        if (string.IsNullOrEmpty(message))
+        if (type == GameOverType.SolarFlare)
         {
-            message = "Game Over!";
+            StartCoroutine(PlaySolarFlareEffect());
+        }
+        else
+        {
+            ShowGameOver(type);
+        }
+    }
+
+    private IEnumerator PlaySolarFlareEffect()
+    {
+        if (solarFlareEffectPrefab != null)
+        {
+            // Solar flare efektini oluştur ve GameOverCanvas'ın en üst child'ı yap
+            GameObject flareEffect = Instantiate(solarFlareEffectPrefab, gameOverCanvas.transform);
+            flareEffect.transform.SetAsFirstSibling();
+
+            // Sadece RectTransform ayarları
+            RectTransform rectTransform = flareEffect.GetComponent<RectTransform>();
+            if (rectTransform != null)
+            {
+                rectTransform.anchorMin = Vector2.zero;
+                rectTransform.anchorMax = Vector2.one;
+                rectTransform.pivot = new Vector2(0.5f, 0.5f);
+                rectTransform.anchoredPosition = Vector2.zero;
+                rectTransform.sizeDelta = Vector2.zero;
+            }
+
+            // Animator'ı al ve animasyonu başlat
+            Animator animator = flareEffect.GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.SetTrigger("Play");
+            }
+
+            // Animasyonun tamamlanmasını bekle (animasyon süresi kadar)
+            yield return new WaitForSeconds(1.5f);
         }
 
-        StartCoroutine(ShowGameOverMessage(message));
+        // Game over ekranını göster
+        ShowGameOver(GameOverType.SolarFlare);
+    }
+
+    private void ShowGameOver(GameOverType type)
+    {
+        if (gameOverCanvas != null)
+        {
+            // Game over canvas'ı en üstte göster
+            Canvas canvas = gameOverCanvas.GetComponent<Canvas>();
+            if (canvas != null)
+            {
+                canvas.sortingOrder = 200; // Solar flare'den daha yüksek
+            }
+
+            gameOverCanvas.gameObject.SetActive(true);
+            StartCoroutine(TypeGameOverMessage(type));
+        }
+    }
+
+    private IEnumerator TypeGameOverMessage(GameOverType type)
+    {
+        string message = GetGameOverMessage(type);
+        gameOverText.text = "";
+
+        foreach (char c in message)
+        {
+            gameOverText.text += c;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+
+        // Oyunu durdur
+        Time.timeScale = 0f;
     }
 
     private string GetGameOverMessage(GameOverType type)
@@ -105,36 +176,6 @@ public class GameOverManager : MonoBehaviour
         {
             TriggerGameOver(GameOverType.SolarFlare);
         }
-    }
-
-    IEnumerator ShowGameOverMessage(string message)
-    {
-        if (gameOverCanvas != null)
-            gameOverCanvas.gameObject.SetActive(true);
-
-        // Fade in
-        float elapsed = 0f;
-        while (elapsed < fadeInDuration)
-        {
-            elapsed += Time.deltaTime;
-            if (canvasGroup != null)
-                canvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsed / fadeInDuration);
-            yield return null;
-        }
-
-        // Type text
-        if (gameOverText != null)
-        {
-            gameOverText.text = "";
-            foreach (char c in message)
-            {
-                gameOverText.text += c;
-                yield return new WaitForSeconds(typingSpeed);
-            }
-        }
-
-        // Oyunu duraklat
-        Time.timeScale = 0f;
     }
 
     // Oyunu yeniden başlatmak için
