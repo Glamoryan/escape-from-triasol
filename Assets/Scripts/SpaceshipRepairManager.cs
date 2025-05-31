@@ -69,28 +69,31 @@ public class SpaceshipRepairManager : MonoBehaviour
 
     public void TryRepair()
     {
-        // Önce Gear gereksinimini bul
-        var gearRequirement = repairRequirements.Find(r => r.itemType == ItemType.Gear);
-        if (gearRequirement != null)
+        bool allRequirementsMet = true;
+
+        foreach (var requirement in repairRequirements)
         {
-            // Envanterden Gear'ı al
-            int available = InventoryManager.Instance.GetItemCount(ItemType.Gear);
+            // Envanterden item'ı al
+            int available = InventoryManager.Instance.GetItemCount(requirement.itemType);
             if (available > 0)
             {
-                int needed = gearRequirement.requiredAmount - gearRequirement.currentAmount;
+                int needed = requirement.requiredAmount - requirement.currentAmount;
                 int amountToUse = Mathf.Min(available, needed);
-                if (InventoryManager.Instance.TrySpendItem(ItemType.Gear, amountToUse))
+                if (InventoryManager.Instance.TrySpendItem(requirement.itemType, amountToUse))
                 {
-                    gearRequirement.currentAmount += amountToUse;
-                    Debug.Log($"Gear için {amountToUse} adet item eklendi. Toplam: {gearRequirement.currentAmount}/{gearRequirement.requiredAmount}");
+                    requirement.currentAmount += amountToUse;
+                    Debug.Log($"{requirement.itemType} için {amountToUse} adet item eklendi. Toplam: {requirement.currentAmount}/{requirement.requiredAmount}");
                 }
+            }
+
+            // Gereksinim kontrolü
+            if (requirement.currentAmount < requirement.requiredAmount)
+            {
+                allRequirementsMet = false;
             }
         }
 
-        // Gear gereksinimini kontrol et
-        bool canRepair = gearRequirement != null && gearRequirement.currentAmount >= gearRequirement.requiredAmount;
-
-        if (canRepair)
+        if (allRequirementsMet)
         {
             // Tamir işlemi tamamlandı
             Debug.Log("Spaceship tamir edildi!");

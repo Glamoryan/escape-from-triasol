@@ -2729,7 +2729,7 @@ MonoBehaviour:
     message: Congratulations! You successfully repaired your spaceship and escaped!
   - type: 2
     message: A massive solar flare has destroyed everything...
-  solarFlareChanceBeforeDay5: 1
+  solarFlareChanceBeforeDay5: 0.1
   solarFlareChanceAfterDay5: 0.5
   guaranteedSolarFlareDay: 7
   gameOverCanvas: {fileID: 1846590529}

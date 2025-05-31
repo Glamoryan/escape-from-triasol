@@ -45,6 +45,14 @@ public class BuildManager : MonoBehaviour
         
         if (buildModeCanvas != null)
             buildModeCanvas.gameObject.SetActive(false);
+            
+        // Aktif olmayan taretleri listeden temizle
+        InvokeRepeating("CleanupDestroyedTurrets", 0f, 1f);
+    }
+
+    void CleanupDestroyedTurrets()
+    {
+        activeTurrets.RemoveAll(turret => turret == null);
     }
 
     void Update()
