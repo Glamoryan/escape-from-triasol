@@ -3782,6 +3782,9 @@ MonoBehaviour:
   - type: 2
     text: {fileID: 1641457292}
     prefix: 
+  startingItems:
+  - type: 0
+    amount: 5
 --- !u!4 &1741420091
 Transform:
   m_ObjectHideFlags: 0
