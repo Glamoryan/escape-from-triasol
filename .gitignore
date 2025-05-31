@@ -3,6 +3,7 @@ Temp/
 Logs/
 Obj/
 .vs/
+build.app/
 
 # Unity specific files
 *.csproj
