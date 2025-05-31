@@ -50,9 +50,12 @@ public class Health : MonoBehaviour
         if (isDead) return;
 
         currentHealth -= damage;
+        OnHealthChanged?.Invoke(currentHealth);
+        
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            OnHealthChanged?.Invoke(currentHealth);
             Die();
         }
     }

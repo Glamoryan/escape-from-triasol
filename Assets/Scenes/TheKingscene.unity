@@ -6364,13 +6364,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   repairRequirements:
   - itemType: 0
-    requiredAmount: 5
+    requiredAmount: 125
     currentAmount: 0
   - itemType: 1
-    requiredAmount: 3
+    requiredAmount: 85
     currentAmount: 0
   - itemType: 2
-    requiredAmount: 4
+    requiredAmount: 40
     currentAmount: 0
   interactionDistance: 3
   repairButton: {fileID: 1821000681}
@@ -7305,11 +7305,11 @@ MonoBehaviour:
     text: {fileID: 1641457292}
   startingItems:
   - type: 0
-    amount: 5
+    amount: 1
   - type: 1
-    amount: 5
+    amount: 0
   - type: 2
-    amount: 5
+    amount: 0
 --- !u!4 &1741420091
 Transform:
   m_ObjectHideFlags: 0
@@ -7363,7 +7363,7 @@ MonoBehaviour:
     - name: Ice Golem
       prefab: {fileID: 1714274998676182, guid: 98e0791ddb0476f4cac1c32f6a3ec206, type: 3}
       spawnPercentage: 100
-  - preparationTime: 10
+  - preparationTime: 0
     levelDuration: 80
     restDuration: 40
     maxEnemies: 60
@@ -7374,7 +7374,7 @@ MonoBehaviour:
     - name: Earth Golem
       prefab: {fileID: 1475286338648080, guid: 574470aee4042ed4e996683a29267ee0, type: 3}
       spawnPercentage: 30
-  - preparationTime: 10
+  - preparationTime: 0
     levelDuration: 100
     restDuration: 50
     maxEnemies: 130
@@ -7388,7 +7388,7 @@ MonoBehaviour:
     - name: Dark Golem
       prefab: {fileID: 1632069410589986, guid: 741e43c00d731114bb3bd2508134e816, type: 3}
       spawnPercentage: 10
-  - preparationTime: 10
+  - preparationTime: 0
     levelDuration: 120
     restDuration: 50
     maxEnemies: 150
@@ -7402,7 +7402,7 @@ MonoBehaviour:
     - name: Dark Golem
       prefab: {fileID: 1632069410589986, guid: 741e43c00d731114bb3bd2508134e816, type: 3}
       spawnPercentage: 20
-  - preparationTime: 10
+  - preparationTime: 0
     levelDuration: 100
     restDuration: 50
     maxEnemies: 180
@@ -7416,6 +7416,34 @@ MonoBehaviour:
     - name: Dark Golem
       prefab: {fileID: 1632069410589986, guid: 741e43c00d731114bb3bd2508134e816, type: 3}
       spawnPercentage: 60
+  - preparationTime: 0
+    levelDuration: 120
+    restDuration: 30
+    maxEnemies: 225
+    enemyTypes:
+    - name: Ice Golem
+      prefab: {fileID: 1714274998676182, guid: 98e0791ddb0476f4cac1c32f6a3ec206, type: 3}
+      spawnPercentage: 5
+    - name: Earth Golem
+      prefab: {fileID: 1475286338648080, guid: 574470aee4042ed4e996683a29267ee0, type: 3}
+      spawnPercentage: 15
+    - name: Dark Golem
+      prefab: {fileID: 1632069410589986, guid: 741e43c00d731114bb3bd2508134e816, type: 3}
+      spawnPercentage: 80
+  - preparationTime: 10
+    levelDuration: 100
+    restDuration: 50
+    maxEnemies: 180
+    enemyTypes:
+    - name: Ice Golem
+      prefab: {fileID: 1714274998676182, guid: 98e0791ddb0476f4cac1c32f6a3ec206, type: 3}
+      spawnPercentage: 1
+    - name: Earth Golem
+      prefab: {fileID: 1475286338648080, guid: 574470aee4042ed4e996683a29267ee0, type: 3}
+      spawnPercentage: 4
+    - name: Dark Golem
+      prefab: {fileID: 1632069410589986, guid: 741e43c00d731114bb3bd2508134e816, type: 3}
+      spawnPercentage: 95
   player: {fileID: 0}
   spawnDistance: 30
   spawnInterval: 1
