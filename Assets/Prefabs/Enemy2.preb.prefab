@@ -831,11 +831,11 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3468615179557782323, guid: d0e5607cc7bae47419484f0fa53427e9, type: 3}
   firePoint: {fileID: 292755446803300017}
   target: {fileID: 0}
-  gearPrefab: {fileID: 8506354297061438436, guid: d4ad4184b4a4c634fab34866c0799725, type: 3}
   attackRange: 7
   stopDistance: 4
   slowSpeed: 2
   fastSpeed: 3
+  dropConfig: {fileID: 11400000, guid: b92b16ca7f4574e139c3432a3326be73, type: 2}
   burstCount: 4
   timeBetweenShots: 0.5
   burstCooldown: 1.5
