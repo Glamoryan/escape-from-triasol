@@ -4,64 +4,41 @@ public class PlayerGearCollector : MonoBehaviour
 {
     public float collectionRange = 1.5f;
     public string itemTag = "Item";
-    public LayerMask itemLayer;
-    public float manualCollectionRange = 3f;
-
     private CollectibleItem nearbyItem;
-
-    void Start()
-    {
-        itemLayer = LayerMask.GetMask("Gear");
-        Debug.Log($"Item Layer Mask: {itemLayer.value}");
-    }
 
     void Update()
     {
-        if (nearbyItem != null)
-        {
-            Debug.Log($"Yakında item var: {nearbyItem.itemType}, Miktar: {nearbyItem.amount}");
-            
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                Debug.Log("F tuşuna basıldı, item toplanıyor...");
-                InventoryManager.Instance.AddItem(nearbyItem.itemType, nearbyItem.amount);
-                Destroy(nearbyItem.gameObject);
-                nearbyItem = null;
-            }
-        }
-
+        // Otomatik toplama
         CollectItemsInRange(collectionRange);
     }
 
     void CollectItemsInRange(float range)
     {
-        Collider2D[] nearbyItems = Physics2D.OverlapCircleAll(transform.position, range, itemLayer);
+        Collider2D[] nearbyItems = Physics2D.OverlapCircleAll(transform.position, range);
         Debug.Log($"Yakında {nearbyItems.Length} adet item bulundu");
 
         foreach (Collider2D item in nearbyItems)
         {
+            if (item == null) continue;
+
+            Debug.Log($"Item kontrol ediliyor: {item.name}, Tag: {item.tag}");
+            
             if (item.CompareTag(itemTag))
             {
-                Debug.Log($"Item bulundu: {item.name}, Tag: {item.tag}, Layer: {item.gameObject.layer}");
-                
-                Vector2 direction = (transform.position - item.transform.position).normalized;
-                item.transform.position = Vector2.MoveTowards(
-                    item.transform.position,
-                    transform.position,
-                    Time.deltaTime * 10f
-                );
-
-                if (Vector2.Distance(transform.position, item.transform.position) < 0.1f)
-                {
-                    Debug.Log("Item yeterince yakın, toplanıyor...");
-                    CollectItem(item.gameObject);
-                }
+                Debug.Log($"Item bulundu ve toplanıyor: {item.name}");
+                CollectItem(item.gameObject);
+            }
+            else
+            {
+                Debug.Log($"Item tag'i uyuşmuyor. Beklenen: {itemTag}, Bulunan: {item.tag}");
             }
         }
     }
 
     void CollectItem(GameObject item)
     {
+        if (item == null) return;
+
         if (InventoryManager.Instance != null)
         {
             CollectibleItem collectible = item.GetComponent<CollectibleItem>();
@@ -76,27 +53,17 @@ public class PlayerGearCollector : MonoBehaviour
                 Debug.LogWarning($"Item'da CollectibleItem bileşeni yok: {item.name}");
             }
         }
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, collectionRange);
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, manualCollectionRange);
+        else
+        {
+            Debug.LogError("InventoryManager.Instance bulunamadı!");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(itemTag))
         {
-            Debug.Log($"Trigger Enter: {other.name}, Tag: {other.tag}, Layer: {other.gameObject.layer}");
-            nearbyItem = other.GetComponent<CollectibleItem>();
-            if (nearbyItem == null)
-            {
-                Debug.LogWarning($"Item'da CollectibleItem bileşeni yok: {other.name}");
-            }
+            CollectItem(other.gameObject);
         }
     }
 
@@ -104,8 +71,13 @@ public class PlayerGearCollector : MonoBehaviour
     {
         if (other.CompareTag(itemTag) && other.GetComponent<CollectibleItem>() == nearbyItem)
         {
-            Debug.Log($"Trigger Exit: {other.name}");
             nearbyItem = null;
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, collectionRange);
     }
 } 

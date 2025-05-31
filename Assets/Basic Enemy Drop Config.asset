@@ -10,11 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0cee2fb67cd24af88047a7da50d40cf, type: 3}
-  m_Name: New Enemy Drop Config
+  m_Name: Basic Enemy Drop Config
   m_EditorClassIdentifier: 
   dropConfigs:
   - itemType: 1
     prefab: {fileID: 6108928834531823832, guid: e72cacd099b3d473b814f12c68c48bd9, type: 3}
-    dropChance: 1
+    dropChance: 0.2
+    minAmount: 1
+    maxAmount: 1
+  - itemType: 0
+    prefab: {fileID: 6108928834531823832, guid: 4d4697566802c4d5d92cd0a4a2133ade, type: 3}
+    dropChance: 0.6
     minAmount: 1
     maxAmount: 1

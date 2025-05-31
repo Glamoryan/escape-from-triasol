@@ -24,6 +24,10 @@ public class BuildManager : MonoBehaviour
     public Canvas buildModeCanvas;
     public TextMeshProUGUI buildModeText;
     public TextMeshProUGUI selectedItemText;
+    public TextMeshProUGUI resourceCostText;
+    public Color activeColor = Color.green;
+    public Color inactiveColor = Color.white;
+    public Color insufficientColor = Color.red;
 
     private BuildableItem selectedItem;
     private bool isBuilding = false;
@@ -44,20 +48,7 @@ public class BuildManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            isBuilding = !isBuilding;
-            Debug.Log($"Build modu: {(isBuilding ? "Açık" : "Kapalı")}");
-            
-            UpdateBuildModeUI();
-            
-            if (!isBuilding)
-            {
-                selectedItem = null;
-                if (previewObject != null)
-                {
-                    Destroy(previewObject);
-                    previewObject = null;
-                }
-            }
+            ToggleBuildMode();
         }
 
         if (isBuilding)
@@ -71,6 +62,7 @@ public class BuildManager : MonoBehaviour
                 selectedItem = buildableItems[0];
                 UpdatePreview();
                 UpdateSelectedItemUI();
+                UpdateResourceCostUI();
                 Debug.Log($"Item seçildi: {selectedItem.name}");
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2) && buildableItems.Length > 1)
@@ -78,6 +70,7 @@ public class BuildManager : MonoBehaviour
                 selectedItem = buildableItems[1];
                 UpdatePreview();
                 UpdateSelectedItemUI();
+                UpdateResourceCostUI();
                 Debug.Log($"Item seçildi: {selectedItem.name}");
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3) && buildableItems.Length > 2)
@@ -85,6 +78,7 @@ public class BuildManager : MonoBehaviour
                 selectedItem = buildableItems[2];
                 UpdatePreview();
                 UpdateSelectedItemUI();
+                UpdateResourceCostUI();
                 Debug.Log($"Item seçildi: {selectedItem.name}");
             }
 
@@ -100,6 +94,24 @@ public class BuildManager : MonoBehaviour
         }
     }
 
+    void ToggleBuildMode()
+    {
+        isBuilding = !isBuilding;
+        UpdateBuildModeUI();
+
+        if (!isBuilding)
+        {
+            selectedItem = null;
+            if (previewObject != null)
+            {
+                Destroy(previewObject);
+                previewObject = null;
+            }
+            UpdateSelectedItemUI();
+            UpdateResourceCostUI();
+        }
+    }
+
     void UpdateBuildModeUI()
     {
         if (buildModeCanvas != null)
@@ -108,6 +120,7 @@ public class BuildManager : MonoBehaviour
             if (buildModeText != null)
             {
                 buildModeText.text = isBuilding ? "Build Mode: Enabled" : "Build Mode: Disabled";
+                buildModeText.color = isBuilding ? activeColor : inactiveColor;
             }
         }
     }
@@ -116,8 +129,72 @@ public class BuildManager : MonoBehaviour
     {
         if (selectedItemText != null)
         {
-            selectedItemText.text = selectedItem != null ? $"Selected Item: {selectedItem.name}" : "Selected Item: None";
+            if (selectedItem != null)
+            {
+                selectedItemText.text = $"Selected Item: {selectedItem.name}";
+                selectedItemText.color = activeColor;
+            }
+            else
+            {
+                selectedItemText.text = "Selected Item: None";
+                selectedItemText.color = inactiveColor;
+            }
         }
+    }
+
+    void UpdateResourceCostUI()
+    {
+        if (resourceCostText != null)
+        {
+            if (selectedItem != null)
+            {
+                string costText = "Required Resources:\n";
+                bool hasInsufficientResources = false;
+
+                if (selectedItem.gearCost > 0)
+                {
+                    bool hasEnoughGear = HasEnoughResource(ItemType.Gear, selectedItem.gearCost);
+                    costText += $"Gear: {selectedItem.gearCost} {(hasEnoughGear ? "" : "(Insufficient)")}\n";
+                    if (!hasEnoughGear) hasInsufficientResources = true;
+                }
+                if (selectedItem.batteryCost > 0)
+                {
+                    bool hasEnoughBattery = HasEnoughResource(ItemType.Battery, selectedItem.batteryCost);
+                    costText += $"Battery: {selectedItem.batteryCost} {(hasEnoughBattery ? "" : "(Insufficient)")}\n";
+                    if (!hasEnoughBattery) hasInsufficientResources = true;
+                }
+                if (selectedItem.ironCost > 0)
+                {
+                    bool hasEnoughIron = HasEnoughResource(ItemType.Iron, selectedItem.ironCost);
+                    costText += $"Iron: {selectedItem.ironCost} {(hasEnoughIron ? "" : "(Insufficient)")}";
+                    if (!hasEnoughIron) hasInsufficientResources = true;
+                }
+                
+                resourceCostText.text = costText;
+                resourceCostText.color = hasInsufficientResources ? insufficientColor : activeColor;
+            }
+            else
+            {
+                resourceCostText.text = "Required Resources:\nNone";
+                resourceCostText.color = inactiveColor;
+            }
+        }
+    }
+
+    bool HasEnoughResource(ItemType type, int amount)
+    {
+        if (InventoryManager.Instance == null) return false;
+        
+        // Geçici olarak kaynakları harcamayı dene
+        bool hasEnough = InventoryManager.Instance.TrySpendItem(type, amount);
+        
+        // Eğer yeterli kaynak varsa, harcanan kaynakları geri ekle
+        if (hasEnough)
+        {
+            InventoryManager.Instance.AddItem(type, amount);
+        }
+        
+        return hasEnough;
     }
 
     void UpdatePreview()

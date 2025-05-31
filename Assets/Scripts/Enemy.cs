@@ -80,7 +80,15 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log($"SpawnItem çağrıldı: {type}, Miktar: {amount}");
         
-        GameObject item = Instantiate(prefab, transform.position, Quaternion.identity);
+        float randomOffset = UnityEngine.Random.Range(0.2f, 0.5f);
+        Vector2 randomDirection = new Vector2(
+            UnityEngine.Random.Range(-1f, 1f),
+            UnityEngine.Random.Range(-1f, 1f)
+        ).normalized;
+        
+        Vector3 spawnPosition = transform.position + (Vector3)(randomDirection * randomOffset);
+        
+        GameObject item = Instantiate(prefab, spawnPosition, Quaternion.identity);
         Debug.Log($"Item oluşturuldu: {item.name}");
         
         CollectibleItem collectible = item.AddComponent<CollectibleItem>();
@@ -89,7 +97,6 @@ public class Enemy : MonoBehaviour
         Debug.Log($"CollectibleItem bileşeni eklendi: {type}, {amount}");
         
         item.layer = LayerMask.NameToLayer("Gear");
-        
         item.tag = "Item";
         
         Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
@@ -185,10 +192,20 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.layer == LayerMask.NameToLayer("Block"))
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            Vector2 escapeDir = (transform.position - col.transform.position).normalized;
+            
+            if (escapeDir == Vector2.zero)
+            {
+                escapeDir = new Vector2(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)).normalized;
+            }
+            
+            transform.position += (Vector3)(escapeDir * 0.5f);
+        }
+        else if (col.gameObject.layer == LayerMask.NameToLayer("Block"))
         {
             Vector2 escapeDir = new Vector2(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)).normalized;
-
             transform.position += (Vector3)(escapeDir * 0.5f);
         }
     }
