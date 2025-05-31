@@ -31,7 +31,7 @@ public class BuildManager : MonoBehaviour
 
     private BuildableItem selectedItem;
     private bool isBuilding = false;
-    private GameObject previewObject;
+    private GameObject previewInstance;
     private Camera mainCamera;
     private Vector3 mouseOffset = new Vector3(0.5f, 0.5f, 0);
 
@@ -87,9 +87,9 @@ public class BuildManager : MonoBehaviour
                 TryBuild();
             }
 
-            if (previewObject != null)
+            if (previewInstance != null)
             {
-                previewObject.transform.position = buildPoint.position;
+                previewInstance.transform.position = buildPoint.position;
             }
         }
     }
@@ -102,10 +102,10 @@ public class BuildManager : MonoBehaviour
         if (!isBuilding)
         {
             selectedItem = null;
-            if (previewObject != null)
+            if (previewInstance != null)
             {
-                Destroy(previewObject);
-                previewObject = null;
+                Destroy(previewInstance);
+                previewInstance = null;
             }
             UpdateSelectedItemUI();
             UpdateResourceCostUI();
@@ -184,68 +184,86 @@ public class BuildManager : MonoBehaviour
     bool HasEnoughResource(ItemType type, int amount)
     {
         if (InventoryManager.Instance == null) return false;
-        
-        // Geçici olarak kaynakları harcamayı dene
-        bool hasEnough = InventoryManager.Instance.TrySpendItem(type, amount);
-        
-        // Eğer yeterli kaynak varsa, harcanan kaynakları geri ekle
-        if (hasEnough)
-        {
-            InventoryManager.Instance.AddItem(type, amount);
-        }
-        
-        return hasEnough;
+        return InventoryManager.Instance.TrySpendItem(type, amount, true);
     }
 
     void UpdatePreview()
     {
-        if (previewObject != null)
+        if (isBuilding && selectedItem != null)
         {
-            Destroy(previewObject);
-        }
-
-        if (selectedItem != null && selectedItem.prefab != null)
-        {
-            previewObject = Instantiate(selectedItem.prefab, buildPoint.position, Quaternion.identity);
-            
-            // Preview için gerekli ayarları yap
-            SpriteRenderer[] renderers = previewObject.GetComponentsInChildren<SpriteRenderer>();
-            foreach (var renderer in renderers)
+            if (previewInstance == null)
             {
-                Color color = renderer.color;
-                color.a = 0.5f;
-                renderer.color = color;
-            }
-
-            // Fiziksel etkileşimi engelle
-            Collider2D[] colliders = previewObject.GetComponentsInChildren<Collider2D>();
-            foreach (var collider in colliders)
-            {
-                collider.enabled = false;
-            }
-
-            // Rigidbody varsa devre dışı bırak
-            Rigidbody2D rb = previewObject.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.simulated = false;
-            }
-
-            // Tüm davranışları devre dışı bırak
-            MonoBehaviour[] behaviours = previewObject.GetComponentsInChildren<MonoBehaviour>();
-            foreach (var behaviour in behaviours)
-            {
-                if (behaviour != null && !(behaviour is SpriteRenderer))
+                previewInstance = Instantiate(selectedItem.prefab);
+                previewInstance.layer = LayerMask.NameToLayer("Preview");
+                
+                // Preview için gerekli bileşenleri devre dışı bırak
+                Collider2D[] colliders = previewInstance.GetComponents<Collider2D>();
+                foreach (var collider in colliders)
                 {
-                    behaviour.enabled = false;
+                    collider.enabled = false;
+                }
+
+                Rigidbody2D rb = previewInstance.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.simulated = false;
+                }
+
+                // Tüm davranışları devre dışı bırak
+                MonoBehaviour[] behaviours = previewInstance.GetComponentsInChildren<MonoBehaviour>();
+                foreach (var behaviour in behaviours)
+                {
+                    if (behaviour != null && !(behaviour is SpriteRenderer))
+                    {
+                        behaviour.enabled = false;
+                    }
+                }
+
+                // Preview için özel bir materyal veya renk ayarla
+                SpriteRenderer[] renderers = previewInstance.GetComponentsInChildren<SpriteRenderer>();
+                foreach (var renderer in renderers)
+                {
+                    Color color = renderer.color;
+                    color.a = 0.5f;
+                    renderer.color = color;
                 }
             }
 
-            // Preview tag'ini ekle
-            previewObject.tag = "Preview";
+            Vector3 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0;
+            previewInstance.transform.position = mousePos;
 
-            previewObject.transform.position = buildPoint.position;
-            Debug.Log("Preview güncellendi");
+            // Kaynakların yeterli olup olmadığını kontrol et
+            bool canBuild = true;
+            if (selectedItem.gearCost > 0 && !InventoryManager.Instance.TrySpendItem(ItemType.Gear, selectedItem.gearCost, true))
+            {
+                canBuild = false;
+            }
+            if (selectedItem.batteryCost > 0 && !InventoryManager.Instance.TrySpendItem(ItemType.Battery, selectedItem.batteryCost, true))
+            {
+                canBuild = false;
+            }
+            if (selectedItem.ironCost > 0 && !InventoryManager.Instance.TrySpendItem(ItemType.Iron, selectedItem.ironCost, true))
+            {
+                canBuild = false;
+            }
+
+            // Preview rengini güncelle
+            SpriteRenderer[] previewRenderers = previewInstance.GetComponentsInChildren<SpriteRenderer>();
+            foreach (var renderer in previewRenderers)
+            {
+                Color color = renderer.color;
+                color.a = 0.5f;
+                color.r = canBuild ? 0.5f : 1f;
+                color.g = canBuild ? 1f : 0.5f;
+                color.b = canBuild ? 0.5f : 0.5f;
+                renderer.color = color;
+            }
+        }
+        else if (previewInstance != null)
+        {
+            Destroy(previewInstance);
+            previewInstance = null;
         }
     }
 

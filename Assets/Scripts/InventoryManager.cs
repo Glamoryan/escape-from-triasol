@@ -32,15 +32,17 @@ public class InventoryManager : MonoBehaviour
         UpdateAllUI();
     }
 
-    public bool TrySpendItem(ItemType type, int amount)
+    public bool TrySpendItem(ItemType type, int amount, bool checkOnly = false)
     {
-        if (items.ContainsKey(type) && items[type] >= amount)
+        if (!items.ContainsKey(type) || items[type] < amount)
+            return false;
+
+        if (!checkOnly)
         {
             items[type] -= amount;
             UpdateUI(type);
-            return true;
         }
-        return false;
+        return true;
     }
 
     public void AddItem(ItemType type, int amount)

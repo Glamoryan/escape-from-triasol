@@ -30,7 +30,10 @@ public class Bullet : MonoBehaviour
                 GameObject bullet = Instantiate(bulletPrefab);
                 bullet.SetActive(false);
                 Bullet bulletScript = bullet.GetComponent<Bullet>();
-                bulletScript.prefab = bulletPrefab;
+                if (bulletScript != null)
+                {
+                    bulletScript.prefab = bulletPrefab;
+                }
                 bulletPools[bulletPrefab].Enqueue(bullet);
             }
         }
@@ -53,15 +56,31 @@ public class Bullet : MonoBehaviour
         }
 
         GameObject newBullet = Instantiate(bulletPrefab, position, rotation);
-        newBullet.GetComponent<Bullet>().prefab = bulletPrefab;
+        Bullet bulletScript = newBullet.GetComponent<Bullet>();
+        if (bulletScript != null)
+        {
+            bulletScript.prefab = bulletPrefab;
+        }
         return newBullet;
     }
 
     public static void ReturnToPool(GameObject bullet, GameObject prefab)
     {
+        if (bullet == null) return;
+        
         if (prefab == null)
         {
-            Debug.LogError("Prefab is null when trying to return bullet to pool!");
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            if (bulletScript != null)
+            {
+                prefab = bulletScript.prefab;
+            }
+        }
+
+        if (prefab == null)
+        {
+            Debug.LogWarning("Bullet prefab referansı bulunamadı, mermi yok ediliyor.");
+            Destroy(bullet);
             return;
         }
 
@@ -87,17 +106,20 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == owner)
+        if (owner == null || collision.gameObject == owner)
             return;
 
         if (collision.CompareTag("Item") || collision.CompareTag("Spaceship") || collision.CompareTag("Structure"))
             return;
 
-        if (owner.CompareTag("Player") && collision.CompareTag("Structure"))
-            return;
+        if (owner != null)
+        {
+            if (owner.CompareTag("Player") && collision.CompareTag("Structure"))
+                return;
 
-        if (owner.CompareTag("Structure") && collision.CompareTag("Player"))
-            return;
+            if (owner.CompareTag("Structure") && collision.CompareTag("Player"))
+                return;
+        }
 
         Health health = collision.GetComponent<Health>();
         if (health != null)
