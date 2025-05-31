@@ -176,7 +176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  damage: 10
-  lifetime: 30
+  damage: 45
+  lifetime: 5
   direction: {x: 0, y: 0}
   owner: {fileID: 0}
+  prefab: {fileID: 0}

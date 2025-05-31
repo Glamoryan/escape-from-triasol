@@ -48,6 +48,7 @@ MonoBehaviour:
   itemType: 2
   amount: 1
   visualPrefab: {fileID: 6194617207022295869, guid: 13e0c10bd2a734364a5369148e416a94, type: 3}
+  lifetime: 45
 --- !u!58 &5703713293943142601
 CircleCollider2D:
   m_ObjectHideFlags: 0

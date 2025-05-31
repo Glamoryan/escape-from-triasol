@@ -12,12 +12,15 @@ public class Bullet : MonoBehaviour
     [HideInInspector] public GameObject prefab;
 
     private static readonly Dictionary<GameObject, Queue<GameObject>> bulletPools = new Dictionary<GameObject, Queue<GameObject>>();
-    private static readonly int poolSize = 50;
+    private static readonly int poolSize = 5;
     private float currentLifetime;
+    private static float lastBulletSpawnTime;
+    private static float poolCleanupInterval = 10f; // 10 saniye
 
     private void OnEnable()
     {
         currentLifetime = lifetime;
+        lastBulletSpawnTime = Time.time;
     }
 
     public static void InitializePool(GameObject bulletPrefab)
@@ -41,6 +44,8 @@ public class Bullet : MonoBehaviour
 
     public static GameObject GetBullet(GameObject bulletPrefab, Vector3 position, Quaternion rotation)
     {
+        lastBulletSpawnTime = Time.time;
+        
         if (!bulletPools.ContainsKey(bulletPrefab))
         {
             InitializePool(bulletPrefab);
@@ -102,6 +107,39 @@ public class Bullet : MonoBehaviour
         {
             ReturnToPool(gameObject, prefab);
         }
+
+        // Havuz temizleme kontrolü
+        if (Time.time - lastBulletSpawnTime > poolCleanupInterval)
+        {
+            CleanupBulletPools();
+        }
+    }
+
+    private static void CleanupBulletPools()
+    {
+        List<GameObject> keysToRemove = new List<GameObject>();
+        
+        foreach (var pool in bulletPools)
+        {
+            // Havuzdaki tüm mermileri yok et
+            while (pool.Value.Count > 0)
+            {
+                GameObject bullet = pool.Value.Dequeue();
+                if (bullet != null)
+                {
+                    Destroy(bullet);
+                }
+            }
+            keysToRemove.Add(pool.Key);
+        }
+
+        // Boş havuzları sözlükten kaldır
+        foreach (var key in keysToRemove)
+        {
+            bulletPools.Remove(key);
+        }
+
+        Debug.Log("Mermi havuzları temizlendi.");
     }
 
     void OnTriggerEnter2D(Collider2D other)

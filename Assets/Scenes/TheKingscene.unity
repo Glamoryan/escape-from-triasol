@@ -913,7 +913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9fa1f204a4a4872b4e68ff3ae01794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 300
   regenDelay: 3
   regenRate: 10
   canRegenerate: 1
@@ -3775,13 +3775,10 @@ MonoBehaviour:
   itemUIs:
   - type: 1
     text: {fileID: 1831074114}
-    prefix: 
   - type: 0
     text: {fileID: 1829224119}
-    prefix: 
   - type: 2
     text: {fileID: 1641457292}
-    prefix: 
   startingItems:
   - type: 0
     amount: 5

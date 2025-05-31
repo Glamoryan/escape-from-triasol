@@ -175,8 +175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3321cc3eb5848fd836676f73bc1edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
-  damage: 10
-  lifetime: 30
+  speed: 9
+  damage: 50
+  lifetime: 5
   direction: {x: 0, y: 0}
   owner: {fileID: 0}
+  prefab: {fileID: 0}

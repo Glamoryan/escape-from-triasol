@@ -11,7 +11,6 @@ public class InventoryManager : MonoBehaviour
     {
         public ItemType type;
         public TMP_Text text;
-        public string prefix = "x";
     }
 
     [System.Serializable]
@@ -91,7 +90,7 @@ public class InventoryManager : MonoBehaviour
         var itemUI = itemUIs.Find(ui => ui != null && ui.type == type);
         if (itemUI != null && itemUI.text != null)
         {
-            itemUI.text.text = itemUI.prefix + items[type];
+            itemUI.text.text = items[type].ToString();
         }
     }
 
@@ -119,7 +118,7 @@ public class InventoryManager : MonoBehaviour
             {
                 if (itemUI != null && itemUI.text != null)
                 {
-                    itemUI.text.text = itemUI.prefix + "0";
+                    itemUI.text.text = "0";
                 }
             }
         }

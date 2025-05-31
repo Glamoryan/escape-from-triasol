@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
     private Health health;
     private Rigidbody2D rb;
     private static readonly Dictionary<ItemType, Queue<GameObject>> itemPool = new Dictionary<ItemType, Queue<GameObject>>();
-    private static readonly int poolSize = 20;
+    private static readonly int poolSize = 5;
 
     void Start()
     {

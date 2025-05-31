@@ -135,8 +135,27 @@ public class EnemySpawnManager : MonoBehaviour
         if (enemyScript != null)
         {
             enemyScript.OnDeath += () => {
-                // Debug.Log("Enemy death");
+                spawnedEnemies--;
+                if (GetActiveEnemyCount() == 0)
+                {
+                    DestroyAllBullets();
+                }
             };
         }
+    }
+
+    int GetActiveEnemyCount()
+    {
+        return GameObject.FindGameObjectsWithTag("Enemy").Length;
+    }
+
+    void DestroyAllBullets()
+    {
+        var bullets = GameObject.FindObjectsOfType<Bullet>();
+        foreach (var bullet in bullets)
+        {
+            Destroy(bullet.gameObject);
+        }
+        Debug.Log("Tüm mermiler temizlendi!");
     }
 }
