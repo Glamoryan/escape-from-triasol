@@ -5136,3 +5136,67 @@ Memory consumption went from 169.3 MB to 165.8 MB.
 Total: 6.161708 ms (FindLiveObjects: 0.462167 ms CreateObjectMapping: 0.230208 ms MarkObjects: 4.118375 ms  DeleteObjects: 1.350750 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 1309.414839 seconds.
+  path: Assets/Prefabs/BlackBullet.prefab
+  artifactKey: Guid(29c2fc6511dbd4ef8ae92b5146486622) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/BlackBullet.prefab using Guid(29c2fc6511dbd4ef8ae92b5146486622) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'cb43caa8572641e8e3b92c7c429f8efd') in 0.273506209 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Prefabs/Turret.preb.prefab
+  artifactKey: Guid(efbe63ac82f745c4ebb31874b3b2be19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Turret.preb.prefab using Guid(efbe63ac82f745c4ebb31874b3b2be19) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '52ced80b145e9966877a388a182cf3d2') in 0.009822666 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 48
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Prefabs/EnemyBullet.preb.prefab
+  artifactKey: Guid(6e5bb21fefd214e9699c510f7eacfca2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/EnemyBullet.preb.prefab using Guid(6e5bb21fefd214e9699c510f7eacfca2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '060ed0d5a8131dbde7bb9e612afa298a') in 0.004626334 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000071 seconds.
+  path: Assets/Prefabs/RedBullet.preb.prefab
+  artifactKey: Guid(753cccedb36cc48b0987e30b15f7c3a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/RedBullet.preb.prefab using Guid(753cccedb36cc48b0987e30b15f7c3a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b255ea7b5a47944f07a1d120e4be6b5d') in 0.004489375 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
+
+========================================================================
+Received Import Request.
+  Time since last request: 28.034285 seconds.
+  path: Assets/Scenes/Don't Touch/The Real One.unity
+  artifactKey: Guid(b81b8cdadfc96493683785df9e876aff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Don't Touch/The Real One.unity using Guid(b81b8cdadfc96493683785df9e876aff) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'eeb688bff52b546a7afb98b5363125e0') in 0.000471209 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 23.911104 seconds.
+  path: Assets/Scenes/Don't Touch/The Real One.unity
+  artifactKey: Guid(b81b8cdadfc96493683785df9e876aff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Don't Touch/The Real One.unity using Guid(b81b8cdadfc96493683785df9e876aff) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bc0b40b54be2499711cb65e85c75ed6c') in 0.000460958 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.242791 seconds.
+  path: Assets/Scenes/Don't Touch/Main.unity
+  artifactKey: Guid(8bdfe1d8e9bc24c90a368ff790b363ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Don't Touch/Main.unity using Guid(8bdfe1d8e9bc24c90a368ff790b363ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '615aca4f86a64eb815d72d329c19847d') in 0.000299917 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.833097 seconds.
+  path: Assets/Scenes/TheKingscene.unity
+  artifactKey: Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/TheKingscene.unity using Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b28faa30d9da78533bfc2f11582baaf1') in 0.000352375 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+

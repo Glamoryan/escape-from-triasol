@@ -4952,3 +4952,35 @@ Memory consumption went from 164.9 MB to 161.9 MB.
 Total: 6.316125 ms (FindLiveObjects: 0.393166 ms CreateObjectMapping: 0.156834 ms MarkObjects: 4.439042 ms  DeleteObjects: 1.326875 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 2701.095450 seconds.
+  path: Assets/Prefabs/Bullet.preb.prefab
+  artifactKey: Guid(c71f1d84bffc44b5d86b60463222ab71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Bullet.preb.prefab using Guid(c71f1d84bffc44b5d86b60463222ab71) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2db4b424e7b6fc7640063a5018a70a23') in 0.273783375 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Prefabs/Bullet2D.preb.prefab
+  artifactKey: Guid(35abb81710504424db8c47daa8e0cd96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Bullet2D.preb.prefab using Guid(35abb81710504424db8c47daa8e0cd96) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '424d58973f2fbae094c34dd67e5e725d') in 0.004063625 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Prefabs/PurpleBullet.prefab
+  artifactKey: Guid(d0e5607cc7bae47419484f0fa53427e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/PurpleBullet.prefab using Guid(d0e5607cc7bae47419484f0fa53427e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7bcc398bf786acb70c04fda20a0e8448') in 0.004320667 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Prefabs/YellowBullet.prefab
+  artifactKey: Guid(d6980b80970de4fb1b7855729ea87180) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/YellowBullet.prefab using Guid(d6980b80970de4fb1b7855729ea87180) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '897f5c69d34ee5e34c825432c8ff61e2') in 0.005490458 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
+
