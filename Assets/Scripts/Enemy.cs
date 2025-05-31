@@ -9,11 +9,13 @@ public class Enemy : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
     public Transform target;
-    public GameObject gearPrefab;
     public float attackRange = 4f;
     public float stopDistance = 1.5f;
     public float slowSpeed = 3f;
     public float fastSpeed = 12f;
+
+    [Header("Drop Settings")]
+    public EnemyDropConfig dropConfig;
 
     [Header("Burst Fire Settings")]
     public int burstCount = 3;
@@ -48,41 +50,64 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        // Gear düşürme şansı ve kontrolü
-        if (gearPrefab != null)
+        Debug.Log("Düşman öldü, drop config kontrol ediliyor...");
+        
+        if (dropConfig != null)
         {
-            // %50 şansla gear düşür
-            if (UnityEngine.Random.value <= 0.5f)
+            Debug.Log($"Drop config bulundu, {dropConfig.dropConfigs.Length} adet item ayarı var");
+            
+            foreach (var dropConfig in dropConfig.dropConfigs)
             {
-                // Gear'ı düşmanın pozisyonunda oluştur
-                GameObject gear = Instantiate(gearPrefab, transform.position, Quaternion.identity);
+                Debug.Log($"Item tipi: {dropConfig.itemType}, Şans: {dropConfig.dropChance}, Prefab: {(dropConfig.prefab != null ? "Var" : "Yok")}");
                 
-                // Gear'ın layer'ını ayarla
-                gear.layer = LayerMask.NameToLayer("Gear");
-                
-                // Gear'a tag ekle
-                gear.tag = "Item";
-                
-                // Rigidbody2D ekle ve ayarla
-                Rigidbody2D rb = gear.GetComponent<Rigidbody2D>();
-                if (rb == null)
+                if (dropConfig.prefab != null && UnityEngine.Random.value <= dropConfig.dropChance)
                 {
-                    rb = gear.AddComponent<Rigidbody2D>();
+                    int amount = UnityEngine.Random.Range(dropConfig.minAmount, dropConfig.maxAmount + 1);
+                    Debug.Log($"Item düşürülüyor: {dropConfig.itemType}, Miktar: {amount}");
+                    SpawnItem(dropConfig.prefab, dropConfig.itemType, amount);
                 }
-                rb.gravityScale = 0f;
-                rb.isKinematic = true;
-                
-                // Collider2D ekle ve ayarla
-                Collider2D col = gear.GetComponent<Collider2D>();
-                if (col == null)
-                {
-                    col = gear.AddComponent<CircleCollider2D>();
-                }
-                col.isTrigger = true;
             }
+        }
+        else
+        {
+            Debug.LogWarning("Drop config atanmamış!");
         }
 
         OnDeath?.Invoke();
+    }
+
+    void SpawnItem(GameObject prefab, ItemType type, int amount)
+    {
+        Debug.Log($"SpawnItem çağrıldı: {type}, Miktar: {amount}");
+        
+        GameObject item = Instantiate(prefab, transform.position, Quaternion.identity);
+        Debug.Log($"Item oluşturuldu: {item.name}");
+        
+        CollectibleItem collectible = item.AddComponent<CollectibleItem>();
+        collectible.itemType = type;
+        collectible.amount = amount;
+        Debug.Log($"CollectibleItem bileşeni eklendi: {type}, {amount}");
+        
+        item.layer = LayerMask.NameToLayer("Gear");
+        
+        item.tag = "Item";
+        
+        Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
+        if (rb == null)
+        {
+            rb = item.AddComponent<Rigidbody2D>();
+        }
+        rb.gravityScale = 0f;
+        rb.isKinematic = true;
+        
+        Collider2D col = item.GetComponent<Collider2D>();
+        if (col == null)
+        {
+            col = item.AddComponent<CircleCollider2D>();
+        }
+        col.isTrigger = true;
+        
+        Debug.Log($"Item hazır: {item.name}, Layer: {item.layer}, Tag: {item.tag}");
     }
 
     void FixedUpdate()

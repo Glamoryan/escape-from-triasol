@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
 {
-    private Collider2D nearbyItem;
+    private CollectibleItem nearbyItem;
 
     void Update()
     {
         if (nearbyItem != null && Input.GetKeyDown(KeyCode.F))
         {
-            InventoryManager.Instance.AddGear(1);
+            InventoryManager.Instance.AddItem(nearbyItem.itemType, nearbyItem.amount);
             Destroy(nearbyItem.gameObject);
             nearbyItem = null;
         }
@@ -18,13 +18,13 @@ public class ItemCollector : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
-            nearbyItem = other;
+            nearbyItem = other.GetComponent<CollectibleItem>();
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other == nearbyItem)
+        if (other.CompareTag("Item") && other.GetComponent<CollectibleItem>() == nearbyItem)
         {
             nearbyItem = null;
         }
