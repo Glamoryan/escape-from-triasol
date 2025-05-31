@@ -104,44 +104,71 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (owner == null || collision.gameObject == owner)
+        // MapBounds'dan geçişe izin ver
+        if (other.CompareTag("MapBounds"))
+        {
             return;
+        }
 
-        if (collision.CompareTag("Item") || collision.CompareTag("Spaceship"))
+        // Kendi sahibine çarpmasını engelle
+        if (owner != null && other.gameObject == owner)
+        {
             return;
+        }
 
+        // Item veya Spaceship'e çarpmasını engelle
+        if (other.CompareTag("Item") || other.CompareTag("Spaceship"))
+        {
+            return;
+        }
+
+        // Hasar verme mantığı
         if (owner != null)
         {
-            if (owner.CompareTag("Player") && collision.CompareTag("Structure"))
+            // Player'dan gelen mermiler
+            if (owner.CompareTag("Player"))
             {
-                Health health = collision.GetComponent<Health>();
-                if (health != null)
+                // Sadece düşmanlara hasar ver
+                if (other.CompareTag("Enemy"))
                 {
-                    health.TakeDamage(damage);
+                    Health targetHealth = other.GetComponent<Health>();
+                    if (targetHealth != null)
+                    {
+                        targetHealth.TakeDamage(damage);
+                    }
+                    ReturnToPool(gameObject, prefab);
                 }
-                ReturnToPool(gameObject, prefab);
-                return;
             }
-
-            if (owner.CompareTag("Structure") && collision.CompareTag("Player"))
+            // Düşmanlardan gelen mermiler
+            else if (owner.CompareTag("Enemy"))
             {
-                Health health = collision.GetComponent<Health>();
-                if (health != null)
+                // Player'a ve yapılara hasar ver
+                if (other.CompareTag("Player") || other.CompareTag("Structure"))
                 {
-                    health.TakeDamage(damage);
+                    Health targetHealth = other.GetComponent<Health>();
+                    if (targetHealth != null)
+                    {
+                        targetHealth.TakeDamage(damage);
+                    }
+                    ReturnToPool(gameObject, prefab);
                 }
-                ReturnToPool(gameObject, prefab);
-                return;
+            }
+            // Turret'lerden gelen mermiler
+            else if (owner.CompareTag("Structure"))
+            {
+                // Sadece düşmanlara hasar ver
+                if (other.CompareTag("Enemy"))
+                {
+                    Health enemyHealth = other.GetComponent<Health>();
+                    if (enemyHealth != null)
+                    {
+                        enemyHealth.TakeDamage(damage);
+                    }
+                    ReturnToPool(gameObject, prefab);
+                }
             }
         }
-
-        Health targetHealth = collision.GetComponent<Health>();
-        if (targetHealth != null)
-        {
-            targetHealth.TakeDamage(damage);
-        }
-        ReturnToPool(gameObject, prefab);
     }
 }

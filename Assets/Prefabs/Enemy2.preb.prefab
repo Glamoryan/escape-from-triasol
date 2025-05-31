@@ -813,9 +813,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9fa1f204a4a4872b4e68ff3ae01794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 225
   regenDelay: 3
   regenRate: 10
+  canRegenerate: 0
 --- !u!114 &5810957237656275512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,13 +833,13 @@ MonoBehaviour:
   firePoint: {fileID: 292755446803300017}
   target: {fileID: 0}
   attackRange: 7
-  stopDistance: 4
+  stopDistance: 6
   slowSpeed: 2
   fastSpeed: 3
   dropConfig: {fileID: 11400000, guid: b92b16ca7f4574e139c3432a3326be73, type: 2}
   burstCount: 4
   timeBetweenShots: 0.5
-  burstCooldown: 1.5
+  burstCooldown: 1
 --- !u!1 &1487717746224072
 GameObject:
   m_ObjectHideFlags: 0

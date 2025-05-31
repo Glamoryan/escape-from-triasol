@@ -9,6 +9,7 @@ TagManager:
   - Structure
   - Gear
   - Spaceship
+  - MapBounds
   layers:
   - Default
   - TransparentFX

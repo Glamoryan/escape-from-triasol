@@ -15,16 +15,16 @@ MonoBehaviour:
   dropConfigs:
   - itemType: 0
     prefab: {fileID: 6108928834531823832, guid: 4d4697566802c4d5d92cd0a4a2133ade, type: 3}
-    dropChance: 0.042
+    dropChance: 0.3
     minAmount: 1
     maxAmount: 1
   - itemType: 1
     prefab: {fileID: 6108928834531823832, guid: e72cacd099b3d473b814f12c68c48bd9, type: 3}
-    dropChance: 0.066
+    dropChance: 0.5
     minAmount: 1
     maxAmount: 1
   - itemType: 2
     prefab: {fileID: 6108928834531823832, guid: 69f63d225f9e746329b223888c9ffa53, type: 3}
-    dropChance: 0.529
+    dropChance: 0.5
     minAmount: 1
     maxAmount: 1

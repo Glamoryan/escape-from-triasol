@@ -3677,7 +3677,7 @@ GameObject:
   - component: {fileID: 1704261160}
   m_Layer: 8
   m_Name: Left
-  m_TagString: Untagged
+  m_TagString: MapBounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3830,39 +3830,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelConfigs:
-  - levelDuration: 30
+  - levelDuration: 60
     restDuration: 30
-    maxEnemies: 40
+    maxEnemies: 35
     enemyTypes:
-    - name: Rifle Man
-      prefab: {fileID: 1167212163858274822, guid: f017003720b604c55b81b969de7d7670, type: 3}
-      spawnPercentage: 95
     - name: Ice Golem
       prefab: {fileID: 1714274998676182, guid: 98e0791ddb0476f4cac1c32f6a3ec206, type: 3}
-      spawnPercentage: 5
-  - levelDuration: 30
-    restDuration: 30
-    maxEnemies: 15
+      spawnPercentage: 100
+  - levelDuration: 80
+    restDuration: 40
+    maxEnemies: 60
     enemyTypes:
-    - name: Rifle Man
-      prefab: {fileID: 1167212163858274822, guid: f017003720b604c55b81b969de7d7670, type: 3}
-      spawnPercentage: 80
+    - name: Ice Golem
+      prefab: {fileID: 1714274998676182, guid: 98e0791ddb0476f4cac1c32f6a3ec206, type: 3}
+      spawnPercentage: 70
+    - name: Earth Golem
+      prefab: {fileID: 1475286338648080, guid: 574470aee4042ed4e996683a29267ee0, type: 3}
+      spawnPercentage: 30
+  - levelDuration: 100
+    restDuration: 50
+    maxEnemies: 100
+    enemyTypes:
+    - name: Ice Golem
+      prefab: {fileID: 1714274998676182, guid: 98e0791ddb0476f4cac1c32f6a3ec206, type: 3}
+      spawnPercentage: 40
+    - name: Earth Golem
+      prefab: {fileID: 1475286338648080, guid: 574470aee4042ed4e996683a29267ee0, type: 3}
+      spawnPercentage: 50
+    - name: Dark Golem
+      prefab: {fileID: 1632069410589986, guid: 741e43c00d731114bb3bd2508134e816, type: 3}
+      spawnPercentage: 10
+  - levelDuration: 120
+    restDuration: 50
+    maxEnemies: 100
+    enemyTypes:
+    - name: Ice Golem
+      prefab: {fileID: 1714274998676182, guid: 98e0791ddb0476f4cac1c32f6a3ec206, type: 3}
+      spawnPercentage: 35
+    - name: Earth Golem
+      prefab: {fileID: 1475286338648080, guid: 574470aee4042ed4e996683a29267ee0, type: 3}
+      spawnPercentage: 45
+    - name: Dark Golem
+      prefab: {fileID: 1632069410589986, guid: 741e43c00d731114bb3bd2508134e816, type: 3}
+      spawnPercentage: 20
+  - levelDuration: 100
+    restDuration: 50
+    maxEnemies: 100
+    enemyTypes:
     - name: Ice Golem
       prefab: {fileID: 1714274998676182, guid: 98e0791ddb0476f4cac1c32f6a3ec206, type: 3}
       spawnPercentage: 20
-  - levelDuration: 30
-    restDuration: 30
-    maxEnemies: 30
-    enemyTypes:
-    - name: Rifle Man
-      prefab: {fileID: 1167212163858274822, guid: f017003720b604c55b81b969de7d7670, type: 3}
-      spawnPercentage: 40
-    - name: Ice Golem
-      prefab: {fileID: 1714274998676182, guid: 98e0791ddb0476f4cac1c32f6a3ec206, type: 3}
-      spawnPercentage: 25
     - name: Earth Golem
       prefab: {fileID: 1475286338648080, guid: 574470aee4042ed4e996683a29267ee0, type: 3}
-      spawnPercentage: 25
+      spawnPercentage: 20
+    - name: Dark Golem
+      prefab: {fileID: 1632069410589986, guid: 741e43c00d731114bb3bd2508134e816, type: 3}
+      spawnPercentage: 60
   player: {fileID: 0}
   spawnDistance: 30
   spawnInterval: 1
@@ -3893,7 +3916,7 @@ GameObject:
   - component: {fileID: 1785409829}
   m_Layer: 8
   m_Name: Bottom
-  m_TagString: Untagged
+  m_TagString: MapBounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4366,7 +4389,7 @@ GameObject:
   - component: {fileID: 2029686071}
   m_Layer: 8
   m_Name: Right
-  m_TagString: Untagged
+  m_TagString: MapBounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4701,7 +4724,7 @@ GameObject:
   - component: {fileID: 2086657197}
   m_Layer: 8
   m_Name: Top
-  m_TagString: Untagged
+  m_TagString: MapBounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

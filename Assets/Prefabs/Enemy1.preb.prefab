@@ -1100,7 +1100,7 @@ MonoBehaviour:
   slowSpeed: 1
   fastSpeed: 2
   dropConfig: {fileID: 11400000, guid: ad84fec306e5343379936102dd7d1164, type: 2}
-  burstCount: 1
+  burstCount: 2
   timeBetweenShots: 0.5
   burstCooldown: 1
 --- !u!114 &-5950138993434040315
@@ -1115,9 +1115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9fa1f204a4a4872b4e68ff3ae01794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 250
+  maxHealth: 175
   regenDelay: 3
   regenRate: 10
+  canRegenerate: 0
 --- !u!1 &1717715502673098
 GameObject:
   m_ObjectHideFlags: 0
