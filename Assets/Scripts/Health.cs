@@ -4,7 +4,7 @@ using System;
 public class Health : MonoBehaviour
 {
     public float maxHealth = 100f;
-    public float currentHealth { get; private set; }
+    public float currentHealth { get; set; }
 
     [Header("Otomatik Can Yenileme")]
     public float regenDelay = 3f;        
