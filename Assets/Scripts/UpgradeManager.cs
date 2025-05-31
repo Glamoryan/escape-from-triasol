@@ -13,6 +13,11 @@ public class UpgradeManager : MonoBehaviour
     public int suitUpgradeBattery = 3;
     public int turretUpgradeIron = 10;
 
+    // Item miktarı göstergeleri
+    public TextMeshProUGUI bulletUpgradeCostText;
+    public TextMeshProUGUI suitUpgradeCostText;
+    public TextMeshProUGUI turretUpgradeCostText;
+
     // Bullet upgrade için yeni prefab
     public GameObject upgradedBulletPrefab;
 
@@ -46,6 +51,7 @@ public class UpgradeManager : MonoBehaviour
         if (turretUpgradeButton != null)
             turretUpgradeButton.onClick.AddListener(UpgradeTurrets);
         UpdateUpgradeCountTexts();
+        UpdateUpgradeCostTexts();
     }
 
     void Update()
@@ -152,5 +158,15 @@ public class UpgradeManager : MonoBehaviour
             suitUpgradeCountText.text = suitUpgradeCount + "x";
         if (turretUpgradeCountText != null)
             turretUpgradeCountText.text = turretUpgradeCount + "x";
+    }
+
+    void UpdateUpgradeCostTexts()
+    {
+        if (bulletUpgradeCostText != null)
+            bulletUpgradeCostText.text = "x" + bulletUpgradeGear;
+        if (suitUpgradeCostText != null)
+            suitUpgradeCostText.text = "x" + suitUpgradeBattery;
+        if (turretUpgradeCostText != null)
+            turretUpgradeCostText.text = "x" + turretUpgradeIron;
     }
 } 
