@@ -69,15 +69,26 @@ public class SpaceshipRepairManager : MonoBehaviour
 
     public void TryRepair()
     {
-        bool canRepair = true;
-        foreach (var requirement in repairRequirements)
+        // Önce Gear gereksinimini bul
+        var gearRequirement = repairRequirements.Find(r => r.itemType == ItemType.Gear);
+        if (gearRequirement != null)
         {
-            if (requirement.currentAmount < requirement.requiredAmount)
+            // Envanterden Gear'ı al
+            int available = InventoryManager.Instance.GetItemCount(ItemType.Gear);
+            if (available > 0)
             {
-                canRepair = false;
-                break;
+                int needed = gearRequirement.requiredAmount - gearRequirement.currentAmount;
+                int amountToUse = Mathf.Min(available, needed);
+                if (InventoryManager.Instance.TrySpendItem(ItemType.Gear, amountToUse))
+                {
+                    gearRequirement.currentAmount += amountToUse;
+                    Debug.Log($"Gear için {amountToUse} adet item eklendi. Toplam: {gearRequirement.currentAmount}/{gearRequirement.requiredAmount}");
+                }
             }
         }
+
+        // Gear gereksinimini kontrol et
+        bool canRepair = gearRequirement != null && gearRequirement.currentAmount >= gearRequirement.requiredAmount;
 
         if (canRepair)
         {
@@ -85,29 +96,15 @@ public class SpaceshipRepairManager : MonoBehaviour
             Debug.Log("Spaceship tamir edildi!");
             repairButton.SetActive(false);
             repairCanvas.gameObject.SetActive(false);
-            // Burada oyunu bitirme veya başka bir event tetikleyebilirsiniz
+            
+            // Game over tetikle
+            if (GameOverManager.Instance != null)
+            {
+                GameOverManager.Instance.TriggerGameOver(GameOverManager.GameOverType.SpaceshipRepaired);
+            }
         }
         else
         {
-            // Eksik malzemeleri kontrol et ve envanterden al
-            foreach (var requirement in repairRequirements)
-            {
-                if (requirement.currentAmount < requirement.requiredAmount)
-                {
-                    int needed = requirement.requiredAmount - requirement.currentAmount;
-                    // Envanterdeki tüm itemi kullan
-                    int available = InventoryManager.Instance.GetItemCount(requirement.itemType);
-                    if (available > 0)
-                    {
-                        int amountToUse = Mathf.Min(available, needed);
-                        if (InventoryManager.Instance.TrySpendItem(requirement.itemType, amountToUse))
-                        {
-                            requirement.currentAmount += amountToUse;
-                            Debug.Log($"{requirement.itemType} için {amountToUse} adet item eklendi. Toplam: {requirement.currentAmount}/{requirement.requiredAmount}");
-                        }
-                    }
-                }
-            }
             UpdateRepairStatusUI();
             UpdateButtonOpacity();
         }

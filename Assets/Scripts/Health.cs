@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
 
     private float regenTimer = 0f;
     private HealthBar healthBar;
+    private bool isDead = false;
 
     void Start()
     {
@@ -44,29 +45,37 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float damage)
     {
-        currentHealth -= amount;
-        OnHealthChanged?.Invoke(currentHealth);
-        
-        regenTimer = regenDelay;
+        if (isDead) return;
 
-        // Health bar'ı göster
-        if (healthBar != null)
-        {
-            healthBar.ShowHealthBar();
-        }
-
+        currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            // Eğer bu bir turret ise BuildManager'a bildir
-            if (gameObject.CompareTag("Structure"))
-            {
-                BuildManager.Instance?.RemoveTurret(gameObject);
-            }
-
-            OnDeath?.Invoke();
-            Destroy(gameObject);
+            currentHealth = 0;
+            Die();
         }
+    }
+
+    void Die()
+    {
+        if (isDead) return;
+        isDead = true;
+
+        // Player öldüyse game over tetikle
+        if (gameObject.CompareTag("Player"))
+        {
+            if (GameOverManager.Instance != null)
+            {
+                GameOverManager.Instance.TriggerGameOver(GameOverManager.GameOverType.PlayerDeath);
+            }
+        }
+
+        if (OnDeath != null)
+        {
+            OnDeath.Invoke();
+        }
+
+        Destroy(gameObject);
     }
 }

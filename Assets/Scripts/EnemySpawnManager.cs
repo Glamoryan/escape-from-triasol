@@ -5,6 +5,7 @@ using System;
 
 public class EnemySpawnManager : MonoBehaviour
 {
+    public static EnemySpawnManager Instance;
     public static event Action<int> OnDayChanged;
     public static event Action<float> OnLevelTimerChanged;
     public static event Action<float> OnRestTimerChanged;
@@ -40,6 +41,18 @@ public class EnemySpawnManager : MonoBehaviour
     private Coroutine spawnRoutine;
     private float levelTimer = 0f;
     private float restTimer = 0f;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
