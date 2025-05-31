@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     [Header("Otomatik Can Yenileme")]
     public float regenDelay = 3f;        
     public float regenRate = 10f;        
+    public bool canRegenerate = false;    // Varsayılan olarak can yenileme kapalı
 
     public event Action OnDeath;
     public event Action<float> OnHealthChanged;
@@ -20,11 +21,18 @@ public class Health : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar = GetComponentInChildren<HealthBar>();
+
+        // Eğer bu bir Player ise can yenilemeyi aktif et
+        if (gameObject.CompareTag("Player"))
+        {
+            canRegenerate = true;
+        }
     }
 
     void Update()
     {
-        if (currentHealth < maxHealth && regenTimer <= 0f)
+        // Sadece can yenileme aktifse ve Player ise can yenile
+        if (canRegenerate && currentHealth < maxHealth && regenTimer <= 0f)
         {
             currentHealth += regenRate * Time.deltaTime;
             if (currentHealth > maxHealth) currentHealth = maxHealth;
@@ -51,6 +59,12 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            // Eğer bu bir turret ise BuildManager'a bildir
+            if (gameObject.CompareTag("Structure"))
+            {
+                BuildManager.Instance?.RemoveTurret(gameObject);
+            }
+
             OnDeath?.Invoke();
             Destroy(gameObject);
         }

@@ -39,6 +39,7 @@ public class HealthBar : MonoBehaviour
         SetVisibility(false);
 
         // Health değişikliklerini dinle
+        health.OnHealthChanged += OnHealthChanged;
         health.OnDeath += OnHealthDepleted;
     }
 
@@ -100,6 +101,12 @@ public class HealthBar : MonoBehaviour
         SetVisibility(true);
     }
 
+    void OnHealthChanged(float currentHealth)
+    {
+        // Can değiştiğinde health bar'ı göster
+        ShowHealthBar();
+    }
+
     void OnHealthDepleted()
     {
         // Ölüm durumunda can barını gizle
@@ -110,6 +117,7 @@ public class HealthBar : MonoBehaviour
     {
         if (health != null)
         {
+            health.OnHealthChanged -= OnHealthChanged;
             health.OnDeath -= OnHealthDepleted;
         }
     }

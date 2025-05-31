@@ -109,22 +109,38 @@ public class Bullet : MonoBehaviour
         if (owner == null || collision.gameObject == owner)
             return;
 
-        if (collision.CompareTag("Item") || collision.CompareTag("Spaceship") || collision.CompareTag("Structure"))
+        if (collision.CompareTag("Item") || collision.CompareTag("Spaceship"))
             return;
 
         if (owner != null)
         {
             if (owner.CompareTag("Player") && collision.CompareTag("Structure"))
+            {
+                Health health = collision.GetComponent<Health>();
+                if (health != null)
+                {
+                    health.TakeDamage(damage);
+                }
+                ReturnToPool(gameObject, prefab);
                 return;
+            }
 
             if (owner.CompareTag("Structure") && collision.CompareTag("Player"))
+            {
+                Health health = collision.GetComponent<Health>();
+                if (health != null)
+                {
+                    health.TakeDamage(damage);
+                }
+                ReturnToPool(gameObject, prefab);
                 return;
+            }
         }
 
-        Health health = collision.GetComponent<Health>();
-        if (health != null)
+        Health targetHealth = collision.GetComponent<Health>();
+        if (targetHealth != null)
         {
-            health.TakeDamage(damage);
+            targetHealth.TakeDamage(damage);
         }
         ReturnToPool(gameObject, prefab);
     }

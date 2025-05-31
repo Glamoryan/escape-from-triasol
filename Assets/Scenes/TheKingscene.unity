@@ -916,6 +916,7 @@ MonoBehaviour:
   maxHealth: 200
   regenDelay: 3
   regenRate: 10
+  canRegenerate: 1
 --- !u!114 &315884492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1984,7 +1985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 693, y: 267}
+  m_AnchoredPosition: {x: 798, y: 305}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &969900039
@@ -2144,11 +2145,12 @@ MonoBehaviour:
   buildableItems:
   - name: Turret
     prefab: {fileID: 84155061749707952, guid: efbe63ac82f745c4ebb31874b3b2be19, type: 3}
-    gearCost: 2
-    batteryCost: 2
-    ironCost: 1
+    gearCost: 1
+    batteryCost: 0
+    ironCost: 0
   buildPoint: {fileID: 535028788}
   buildRange: 10
+  maxTurretCount: 4
   buildModeCanvas: {fileID: 1455763872}
   buildModeText: {fileID: 42675817}
   selectedItemText: {fileID: 821283205}
@@ -3450,7 +3452,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 862, y: 115}
+  m_AnchoredPosition: {x: 967, y: 153}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1641457292
@@ -3586,7 +3588,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 687.99994, y: 405.99994}
+  m_AnchoredPosition: {x: 792.99994, y: 443.99994}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1642981565
@@ -3827,7 +3829,7 @@ MonoBehaviour:
   levelConfigs:
   - levelDuration: 30
     restDuration: 30
-    maxEnemies: 10
+    maxEnemies: 40
     enemyTypes:
     - name: Rifle Man
       prefab: {fileID: 1167212163858274822, guid: f017003720b604c55b81b969de7d7670, type: 3}
@@ -4075,7 +4077,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 860, y: 397}
+  m_AnchoredPosition: {x: 965, y: 435}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1829224119
@@ -4211,7 +4213,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 865.00006, y: 258.00006}
+  m_AnchoredPosition: {x: 970.00006, y: 296.00006}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1831074114
@@ -4796,7 +4798,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 689.9998, y: 123.999954}
+  m_AnchoredPosition: {x: 794.9998, y: 161.99995}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2103764123
