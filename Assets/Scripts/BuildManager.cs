@@ -130,6 +130,8 @@ public class BuildManager : MonoBehaviour
         if (selectedItem != null && selectedItem.prefab != null)
         {
             previewObject = Instantiate(selectedItem.prefab, buildPoint.position, Quaternion.identity);
+            
+            // Preview için gerekli ayarları yap
             SpriteRenderer[] renderers = previewObject.GetComponentsInChildren<SpriteRenderer>();
             foreach (var renderer in renderers)
             {
@@ -137,6 +139,33 @@ public class BuildManager : MonoBehaviour
                 color.a = 0.5f;
                 renderer.color = color;
             }
+
+            // Fiziksel etkileşimi engelle
+            Collider2D[] colliders = previewObject.GetComponentsInChildren<Collider2D>();
+            foreach (var collider in colliders)
+            {
+                collider.enabled = false;
+            }
+
+            // Rigidbody varsa devre dışı bırak
+            Rigidbody2D rb = previewObject.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.simulated = false;
+            }
+
+            // Tüm davranışları devre dışı bırak
+            MonoBehaviour[] behaviours = previewObject.GetComponentsInChildren<MonoBehaviour>();
+            foreach (var behaviour in behaviours)
+            {
+                if (behaviour != null && !(behaviour is SpriteRenderer))
+                {
+                    behaviour.enabled = false;
+                }
+            }
+
+            // Preview tag'ini ekle
+            previewObject.tag = "Preview";
 
             previewObject.transform.position = buildPoint.position;
             Debug.Log("Preview güncellendi");
@@ -159,7 +188,18 @@ public class BuildManager : MonoBehaviour
 
         SpendResources(selectedItem);
 
-        Instantiate(selectedItem.prefab, buildPoint.position, Quaternion.identity);
+        GameObject builtObject = Instantiate(selectedItem.prefab, buildPoint.position, Quaternion.identity);
+        
+        // İnşa edilen objenin tüm davranışlarını etkinleştir
+        MonoBehaviour[] behaviours = builtObject.GetComponentsInChildren<MonoBehaviour>();
+        foreach (var behaviour in behaviours)
+        {
+            if (behaviour != null)
+            {
+                behaviour.enabled = true;
+            }
+        }
+
         Debug.Log($"{selectedItem.name} inşa edildi!");
     }
 
