@@ -21,6 +21,7 @@ public class EnemySpawnManager : MonoBehaviour
     [System.Serializable]
     public class LevelConfig
     {
+        public float preparationTime = 10f; // Hazırlık süresi
         public float levelDuration = 180f;
         public float restDuration = 120f;
         public int maxEnemies = 5;
@@ -31,6 +32,7 @@ public class EnemySpawnManager : MonoBehaviour
     public Transform player;
     public float spawnDistance = 10f;
     public float spawnInterval = 1f;
+    public float initialPreparationTime = 10f; // Oyun başlangıcı hazırlık süresi
 
     private int currentLevel = 1;
     private int spawnedEnemies = 0;
@@ -51,6 +53,21 @@ public class EnemySpawnManager : MonoBehaviour
         }
 
         OnDayChanged?.Invoke(currentLevel);
+        StartCoroutine(InitialPreparation());
+    }
+
+    IEnumerator InitialPreparation()
+    {
+        Debug.Log($"Oyun başlıyor! Hazırlık süresi: {initialPreparationTime} saniye");
+        
+        float prepTimer = 0f;
+        while (prepTimer < initialPreparationTime)
+        {
+            prepTimer += Time.deltaTime;
+            OnLevelTimerChanged?.Invoke(prepTimer / initialPreparationTime);
+            yield return null;
+        }
+
         StartCoroutine(LevelLoop());
     }
 
@@ -61,6 +78,17 @@ public class EnemySpawnManager : MonoBehaviour
             LevelConfig currentConfig = levelConfigs[currentLevel - 1];
             spawnedEnemies = 0;
             levelTimer = 0f;
+
+            Debug.Log($"Day {currentLevel} Hazırlık Süresi: {currentConfig.preparationTime} saniye");
+            
+            // Hazırlık süresi
+            float prepTimer = 0f;
+            while (prepTimer < currentConfig.preparationTime)
+            {
+                prepTimer += Time.deltaTime;
+                OnLevelTimerChanged?.Invoke(prepTimer / currentConfig.preparationTime);
+                yield return null;
+            }
 
             Debug.Log($"Day {currentLevel} Başladı. Maksimum düşman: {currentConfig.maxEnemies}");
             OnDayChanged?.Invoke(currentLevel);

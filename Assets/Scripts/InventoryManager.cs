@@ -74,6 +74,16 @@ public class InventoryManager : MonoBehaviour
         return true;
     }
 
+    public bool HasItem(ItemType type, int amount)
+    {
+        return items.ContainsKey(type) && items[type] >= amount;
+    }
+
+    public int GetItemCount(ItemType type)
+    {
+        return items.ContainsKey(type) ? items[type] : 0;
+    }
+
     public void AddItem(ItemType type, int amount)
     {
         if (!items.ContainsKey(type))

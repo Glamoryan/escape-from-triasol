@@ -19,19 +19,22 @@ public class CinematicTextController : MonoBehaviour
 
     IEnumerator PlayMessages()
     {
-        foreach (var message in messages)
+        for (int i = 0; i < messages.Length; i++)
         {
             // Fade in
             yield return StartCoroutine(FadeCanvas(0f, 1f, 0.5f));
 
             // Type text
-            yield return StartCoroutine(TypeText(message));
+            yield return StartCoroutine(TypeText(messages[i]));
 
             // Bekle
             yield return new WaitForSeconds(messageDelay);
 
-            // Fade out
-            yield return StartCoroutine(FadeCanvas(1f, 0f, 0.5f));
+            // Son mesaj değilse fade out yap
+            if (i < messages.Length - 1)
+            {
+                yield return StartCoroutine(FadeCanvas(1f, 0f, 0.5f));
+            }
         }
     }
 
