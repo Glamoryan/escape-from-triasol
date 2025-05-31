@@ -25,11 +25,20 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject == owner)
             return;
 
-            Health health = collision.GetComponent<Health>();
-            if (health != null)
-            {
-                health.TakeDamage(damage);
-            }
-            Destroy(gameObject);
+        if (collision.CompareTag("Item") || collision.CompareTag("Spaceship") || collision.CompareTag("Structure"))
+            return;
+
+        if (owner.CompareTag("Player") && collision.CompareTag("Structure"))
+            return;
+
+        if (owner.CompareTag("Structure") && collision.CompareTag("Player"))
+            return;
+
+        Health health = collision.GetComponent<Health>();
+        if (health != null)
+        {
+            health.TakeDamage(damage);
+        }
+        Destroy(gameObject);
     }
 }
