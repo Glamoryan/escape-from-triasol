@@ -314,6 +314,10 @@ MonoBehaviour:
   buildModeCanvas: {fileID: 1337571225}
   buildModeText: {fileID: 107693713}
   selectedItemText: {fileID: 1131978218}
+  resourceCostText: {fileID: 0}
+  activeColor: {r: 0, g: 1, b: 0, a: 1}
+  inactiveColor: {r: 1, g: 1, b: 1, a: 1}
+  insufficientColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &48687966
 Transform:
   m_ObjectHideFlags: 0
@@ -948,17 +952,25 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.050317407, y: -1.9476023}
+  m_Offset: {x: 0.04, y: -2.14}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 8.31, y: 8.68}
+<<<<<<< Updated upstream
     newSize: {x: 8.31, y: 8.68}
+=======
+    newSize: {x: 5.95, y: 8.61}
+>>>>>>> Stashed changes
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
+<<<<<<< Updated upstream
   m_Size: {x: 6.63, y: 4.714796}
+=======
+  m_Size: {x: 4.63, y: 4.714796}
+>>>>>>> Stashed changes
   m_EdgeRadius: 0
 --- !u!212 &388863027
 SpriteRenderer:
@@ -1004,7 +1016,11 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
+<<<<<<< Updated upstream
   m_Sprite: {fileID: -8820715720815460284, guid: 7d7989ffc83a03848bfa17582c896769, type: 3}
+=======
+  m_Sprite: {fileID: -8820715720815460284, guid: e373f699f6fcc444391e5e3c312055e7, type: 3}
+>>>>>>> Stashed changes
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1024,8 +1040,13 @@ Transform:
   m_GameObject: {fileID: 388863025}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: -0.36, y: 1.44, z: 0}
   m_LocalScale: {x: 0.35, y: 0.65, z: 1}
+=======
+  m_LocalPosition: {x: -0.34, y: 0.96, z: 0}
+  m_LocalScale: {x: 0.35, y: 0.6, z: 1}
+>>>>>>> Stashed changes
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1064,17 +1085,29 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
+<<<<<<< Updated upstream
   m_Offset: {x: 3.65, y: -2.77}
+=======
+  m_Offset: {x: 3.35, y: -2.79}
+>>>>>>> Stashed changes
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 8.31, y: 8.68}
+<<<<<<< Updated upstream
     newSize: {x: 8.31, y: 8.68}
+=======
+    newSize: {x: 5.95, y: 8.61}
+>>>>>>> Stashed changes
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
+<<<<<<< Updated upstream
   m_Size: {x: 1.27, y: 2.53}
+=======
+  m_Size: {x: 1.97, y: 2.51}
+>>>>>>> Stashed changes
   m_EdgeRadius: 0
 --- !u!61 &388863030
 BoxCollider2D:
@@ -1110,17 +1143,29 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
+<<<<<<< Updated upstream
   m_Offset: {x: -3.74, y: -2.77}
+=======
+  m_Offset: {x: -3.3, y: -2.79}
+>>>>>>> Stashed changes
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 8.31, y: 8.68}
+<<<<<<< Updated upstream
     newSize: {x: 8.31, y: 8.68}
+=======
+    newSize: {x: 5.95, y: 8.61}
+>>>>>>> Stashed changes
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
+<<<<<<< Updated upstream
   m_Size: {x: 1.27, y: 2.53}
+=======
+  m_Size: {x: 1.97, y: 2.51}
+>>>>>>> Stashed changes
   m_EdgeRadius: 0
 --- !u!1 &391656089
 GameObject:
