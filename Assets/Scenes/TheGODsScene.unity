@@ -150,6 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 2034494438478811705, guid: 694f6af8a2fb64169b7765ed2adcff8a, type: 3}
   ghostBlockPrefab: {fileID: 2095283746332933561, guid: bf6449b34448845ffa2787376ae19dd2, type: 3}
+  turretPrefab: {fileID: 0}
+  ghostTurretPrefab: {fileID: 0}
 --- !u!4 &49946190
 Transform:
   m_ObjectHideFlags: 0
@@ -1484,7 +1486,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 1132206095249792208, guid: 68e3bd196f21c794db996cc511e9b780, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2282,6 +2284,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 200
   healthBarPrefab: {fileID: 6570468480104414671, guid: 423f2d5e1662d4dcdb6167d1271d5593, type: 3}
+  regenDelay: 3
+  regenRate: 10
 --- !u!114 &1830242868
 MonoBehaviour:
   m_ObjectHideFlags: 0
