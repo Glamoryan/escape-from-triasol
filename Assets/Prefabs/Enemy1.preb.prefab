@@ -1094,7 +1094,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3468615179557782323, guid: d6980b80970de4fb1b7855729ea87180, type: 3}
   firePoint: {fileID: 3527543998738191468}
   target: {fileID: 0}
-  gearPrefab: {fileID: 173735053818013415, guid: e62bce33f63d546d0958089b1bcf63f6, type: 3}
+  gearPrefab: {fileID: 8506354297061438436, guid: d4ad4184b4a4c634fab34866c0799725, type: 3}
   attackRange: 6
   stopDistance: 5
   slowSpeed: 1
@@ -1116,6 +1116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 250
   healthBarPrefab: {fileID: 6570468480104414671, guid: 423f2d5e1662d4dcdb6167d1271d5593, type: 3}
+  regenDelay: 3
+  regenRate: 10
 --- !u!1 &1717715502673098
 GameObject:
   m_ObjectHideFlags: 0

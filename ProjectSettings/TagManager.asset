@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Structure
   - Gear
+  - Spaceship
   layers:
   - Default
   - TransparentFX
