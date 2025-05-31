@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
@@ -29,8 +30,9 @@ public class Enemy : MonoBehaviour
     private float cooldownTimer;
     private bool isBursting = false;
     private Health health;
-
     private Rigidbody2D rb;
+    private static readonly Dictionary<ItemType, Queue<GameObject>> itemPool = new Dictionary<ItemType, Queue<GameObject>>();
+    private static readonly int poolSize = 20;
 
     void Start()
     {
@@ -50,36 +52,56 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Düşman öldü, drop config kontrol ediliyor...");
-        
         if (dropConfig != null)
         {
-            Debug.Log($"Drop config bulundu, {dropConfig.dropConfigs.Length} adet item ayarı var");
-            
             foreach (var dropConfig in dropConfig.dropConfigs)
             {
-                Debug.Log($"Item tipi: {dropConfig.itemType}, Şans: {dropConfig.dropChance}, Prefab: {(dropConfig.prefab != null ? "Var" : "Yok")}");
-                
                 if (dropConfig.prefab != null && UnityEngine.Random.value <= dropConfig.dropChance)
                 {
                     int amount = UnityEngine.Random.Range(dropConfig.minAmount, dropConfig.maxAmount + 1);
-                    Debug.Log($"Item düşürülüyor: {dropConfig.itemType}, Miktar: {amount}");
                     SpawnItem(dropConfig.prefab, dropConfig.itemType, amount);
                 }
             }
-        }
-        else
-        {
-            Debug.LogWarning("Drop config atanmamış!");
         }
 
         OnDeath?.Invoke();
     }
 
+    private GameObject GetPooledItem(GameObject prefab, ItemType type)
+    {
+        if (!itemPool.ContainsKey(type))
+        {
+            itemPool[type] = new Queue<GameObject>();
+            for (int i = 0; i < poolSize; i++)
+            {
+                GameObject obj = Instantiate(prefab);
+                obj.SetActive(false);
+                itemPool[type].Enqueue(obj);
+            }
+        }
+
+        if (itemPool[type].Count > 0)
+        {
+            GameObject item = itemPool[type].Dequeue();
+            item.SetActive(true);
+            return item;
+        }
+
+        return Instantiate(prefab);
+    }
+
+    private void ReturnToPool(GameObject item, ItemType type)
+    {
+        item.SetActive(false);
+        if (!itemPool.ContainsKey(type))
+        {
+            itemPool[type] = new Queue<GameObject>();
+        }
+        itemPool[type].Enqueue(item);
+    }
+
     void SpawnItem(GameObject prefab, ItemType type, int amount)
     {
-        Debug.Log($"SpawnItem çağrıldı: {type}, Miktar: {amount}");
-        
         float randomOffset = UnityEngine.Random.Range(0.2f, 0.5f);
         Vector2 randomDirection = new Vector2(
             UnityEngine.Random.Range(-1f, 1f),
@@ -88,13 +110,16 @@ public class Enemy : MonoBehaviour
         
         Vector3 spawnPosition = transform.position + (Vector3)(randomDirection * randomOffset);
         
-        GameObject item = Instantiate(prefab, spawnPosition, Quaternion.identity);
-        Debug.Log($"Item oluşturuldu: {item.name}");
+        GameObject item = GetPooledItem(prefab, type);
+        item.transform.position = spawnPosition;
         
-        CollectibleItem collectible = item.AddComponent<CollectibleItem>();
+        CollectibleItem collectible = item.GetComponent<CollectibleItem>();
+        if (collectible == null)
+        {
+            collectible = item.AddComponent<CollectibleItem>();
+        }
         collectible.itemType = type;
         collectible.amount = amount;
-        Debug.Log($"CollectibleItem bileşeni eklendi: {type}, {amount}");
         
         item.layer = LayerMask.NameToLayer("Gear");
         item.tag = "Item";
@@ -113,8 +138,6 @@ public class Enemy : MonoBehaviour
             col = item.AddComponent<CircleCollider2D>();
         }
         col.isTrigger = true;
-        
-        Debug.Log($"Item hazır: {item.name}, Layer: {item.layer}, Tag: {item.tag}");
     }
 
     void FixedUpdate()
@@ -183,7 +206,7 @@ public class Enemy : MonoBehaviour
         if (bulletPrefab == null || firePoint == null || target == null) return;
 
         Vector2 dir = (target.position - firePoint.position).normalized;
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        GameObject bullet = Bullet.GetBullet(bulletPrefab, firePoint.position, Quaternion.identity);
 
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.direction = dir;

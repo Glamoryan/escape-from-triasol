@@ -29,7 +29,6 @@ public class EnergyBar : MonoBehaviour
     {
         currentEnergy = maxEnergy;
         UpdateUI();
-        Debug.Log($"EnergyBar başlatıldı. Başlangıç enerjisi: {currentEnergy}");
     }
 
     void Update()
@@ -52,10 +51,8 @@ public class EnergyBar : MonoBehaviour
             currentEnergy -= amount;
             regenerationTimer = regenerationDelay;
             UpdateUI();
-            Debug.Log($"Enerji kullanıldı. Kalan enerji: {currentEnergy}");
             return true;
         }
-        Debug.Log($"Yetersiz enerji. Mevcut: {currentEnergy}, Gerekli: {amount}");
         return false;
     }
 
@@ -64,11 +61,6 @@ public class EnergyBar : MonoBehaviour
         if (fillImage != null)
         {
             fillImage.fillAmount = currentEnergy / maxEnergy;
-            Debug.Log($"UI güncellendi. Fill miktarı: {fillImage.fillAmount}");
-        }
-        else
-        {
-            Debug.LogWarning("Fill Image referansı eksik!");
         }
     }
 } 

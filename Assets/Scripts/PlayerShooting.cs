@@ -59,7 +59,7 @@ public class PlayerShooting : MonoBehaviour
         if (fireCountdown <= 0f && bulletPrefab != null && firePoint != null && target != null)
         {
             Vector2 dir = (target.position - firePoint.position).normalized;
-            GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            GameObject bulletGO = Bullet.GetBullet(bulletPrefab, firePoint.position, Quaternion.identity);
             
             Bullet bullet = bulletGO.GetComponent<Bullet>();
             if (bullet != null)
