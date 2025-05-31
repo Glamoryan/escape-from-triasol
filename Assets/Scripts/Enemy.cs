@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         if (target == null)
-            target = GameObject.FindGameObjectWithTag("Player")?.transform;
+            FindNearestTarget();
 
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
@@ -48,6 +48,38 @@ public class Enemy : MonoBehaviour
         {
             health.OnDeath += Die;
         }
+    }
+
+    void FindNearestTarget()
+    {
+        float shortestDistance = Mathf.Infinity;
+        Transform nearestTarget = null;
+
+        // Player'ı kontrol et
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            float distToPlayer = Vector2.Distance(transform.position, player.transform.position);
+            if (distToPlayer < shortestDistance)
+            {
+                shortestDistance = distToPlayer;
+                nearestTarget = player.transform;
+            }
+        }
+
+        // Turret'leri kontrol et
+        GameObject[] turrets = GameObject.FindGameObjectsWithTag("Structure");
+        foreach (GameObject turret in turrets)
+        {
+            float distToTurret = Vector2.Distance(transform.position, turret.transform.position);
+            if (distToTurret < shortestDistance)
+            {
+                shortestDistance = distToTurret;
+                nearestTarget = turret.transform;
+            }
+        }
+
+        target = nearestTarget;
     }
 
     void Die()
@@ -142,7 +174,11 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (target == null) return;
+        if (target == null)
+        {
+            FindNearestTarget();
+            return;
+        }
 
         float distance = Vector2.Distance(transform.position, target.position);
 
@@ -164,7 +200,11 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (target == null) return;
+        if (target == null)
+        {
+            FindNearestTarget();
+            return;
+        }
 
         float distance = Vector2.Distance(transform.position, target.position);
 

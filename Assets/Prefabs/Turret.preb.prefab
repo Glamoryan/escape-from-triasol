@@ -334,6 +334,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar.preb
       objectReference: {fileID: 0}
+    - target: {fileID: 6390770013399662220, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6390770013399662220, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6471031259664778444, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -373,6 +381,14 @@ PrefabInstance:
     - target: {fileID: 6471031259664778444, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429050133253624468, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429050133253624468, guid: 4d65b50fc74064215afb873163cceae9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
