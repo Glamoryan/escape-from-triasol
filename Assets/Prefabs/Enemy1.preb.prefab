@@ -1103,6 +1103,12 @@ MonoBehaviour:
   burstCount: 2
   timeBetweenShots: 0.5
   burstCooldown: 1
+  explosionParticlePrefabs:
+  - {fileID: 1985655064596568, guid: a9726ee302999a84ea27e4657abb703f, type: 3}
+  explosionDuration: 0.5
+  maxShakeDistance: 10
+  maxShakeIntensity: 0.5
+  shakeDuration: 0.3
 --- !u!114 &-5950138993434040315
 MonoBehaviour:
   m_ObjectHideFlags: 0

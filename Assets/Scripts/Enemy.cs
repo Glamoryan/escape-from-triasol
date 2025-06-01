@@ -23,6 +23,13 @@ public class Enemy : MonoBehaviour
     public float timeBetweenShots = 0.2f;
     public float burstCooldown = 1.5f;
 
+    [Header("Death Effect")]
+    public GameObject[] explosionParticlePrefabs;
+    public float explosionDuration = 0.5f;
+    public float maxShakeDistance = 10f;
+    public float maxShakeIntensity = 0.5f;
+    public float shakeDuration = 0.3f;
+
     public Action OnDeath;
 
     private int shotsLeftInBurst;
@@ -84,6 +91,18 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        // Patlama efekti oluştur
+        GameObject explosionObj = new GameObject("Explosion");
+        explosionObj.transform.position = transform.position;
+        
+        ExplosionEffect explosion = explosionObj.AddComponent<ExplosionEffect>();
+        explosion.explosionParticlePrefabs = explosionParticlePrefabs;
+        explosion.explosionDuration = explosionDuration;
+        explosion.maxShakeDistance = maxShakeDistance;
+        explosion.maxShakeIntensity = maxShakeIntensity;
+        explosion.shakeDuration = shakeDuration;
+
+        // Item drop
         if (dropConfig != null)
         {
             foreach (var dropConfig in dropConfig.dropConfigs)
