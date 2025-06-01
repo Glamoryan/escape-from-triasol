@@ -1328,6 +1328,9 @@ MonoBehaviour:
   bulletUpgradeButton: {fileID: 1425498422}
   suitUpgradeButton: {fileID: 1072720415}
   turretUpgradeButton: {fileID: 1345425379}
+  upgradeBulletSound: {fileID: 0}
+  upgradeSuitSound: {fileID: 0}
+  upgradeTurretSound: {fileID: 0}
   bulletUpgradeGear: 5
   suitUpgradeBattery: 3
   turretUpgradeIron: 10
@@ -1335,6 +1338,7 @@ MonoBehaviour:
   suitUpgradeCostText: {fileID: 1531106287}
   turretUpgradeCostText: {fileID: 697338295}
   upgradedBulletPrefab: {fileID: 3468615179557782323, guid: 753cccedb36cc48b0987e30b15f7c3a5, type: 3}
+  upgradedPlayerPrefab: {fileID: 1862199358554619449, guid: d87797bfccf88421b8dc243056c99057, type: 3}
   suitHealthBonus: 150
   turretHealthBonus: 300
   turretDamageBonus: 25
@@ -1750,8 +1754,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
-  regenDelay: 3
-  regenRate: 10
+  regenDelay: 1
+  regenRate: 15
   canRegenerate: 1
   animator: {fileID: 0}
 --- !u!114 &315884492
@@ -7630,9 +7634,9 @@ MonoBehaviour:
     text: {fileID: 1641457292}
   startingItems:
   - type: 0
-    amount: 8
+    amount: 16
   - type: 1
-    amount: 2
+    amount: 8
   - type: 2
     amount: 0
 --- !u!4 &1741420091
@@ -7681,8 +7685,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelConfigs:
   - preparationTime: 10
-    levelDuration: 50
-    restDuration: 30
+    levelDuration: 40
+    restDuration: 15
     maxEnemies: 15
     enemyTypes:
     - name: Ice Golem
