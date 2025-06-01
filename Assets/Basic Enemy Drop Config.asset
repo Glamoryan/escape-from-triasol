@@ -20,7 +20,7 @@ MonoBehaviour:
     maxAmount: 1
   - itemType: 0
     prefab: {fileID: 6108928834531823832, guid: 4d4697566802c4d5d92cd0a4a2133ade, type: 3}
-    dropChance: 0.6
+    dropChance: 0.8
     minAmount: 1
     maxAmount: 1
   - itemType: 2
