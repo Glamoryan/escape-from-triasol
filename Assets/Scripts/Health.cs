@@ -24,6 +24,7 @@ public class Health : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar = GetComponentInChildren<HealthBar>();
+        animator = GetComponent<Animator>();
 
         // Eğer bu bir Player ise can yenilemeyi aktif et
         if (gameObject.CompareTag("Player"))
@@ -59,15 +60,16 @@ public class Health : MonoBehaviour
             currentHealth = 0;
             OnHealthChanged?.Invoke(currentHealth);
             Die();
-            animator.SetTrigger("IsDead");
+            if (animator != null)
+            {
+                animator.SetTrigger("IsDead");
+            }
         }
-
     }
 
     public void DestroyPlayer()
     {
-            Destroy(gameObject);
-
+        Destroy(gameObject);
     }
 
     void Die()

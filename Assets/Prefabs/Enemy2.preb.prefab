@@ -700,6 +700,7 @@ GameObject:
   - component: {fileID: -4751414590543811203}
   - component: {fileID: -5123766801678144921}
   - component: {fileID: 5810957237656275512}
+  - component: {fileID: 8119566071220964700}
   m_Layer: 3
   m_Name: Enemy2.preb
   m_TagString: Enemy
@@ -817,6 +818,7 @@ MonoBehaviour:
   regenDelay: 3
   regenRate: 10
   canRegenerate: 0
+  animator: {fileID: 0}
 --- !u!114 &5810957237656275512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,6 +848,28 @@ MonoBehaviour:
   maxShakeDistance: 10
   maxShakeIntensity: 0.5
   shakeDuration: 0.3
+--- !u!95 &8119566071220964700
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475286338648080}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7ca54fc317997454e97ba7860edbd3fd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1487717746224072
 GameObject:
   m_ObjectHideFlags: 0
