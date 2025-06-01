@@ -8,13 +8,35 @@ public class Turret2D : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
     public float fireRate = 1f;
-    private float fireCountdown = 0f;
 
+    [Header("Ses Ayarları")]
+    public AudioClip shootSound;
+    public float shootVolume = 0.5f;
+    public float minPitch = 0.9f;
+    public float maxPitch = 1.1f;
+
+    private float fireCountdown = 0f;
     private Transform target;
+    private AudioSource audioSource;
 
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.3f);
+
+        // AudioSource bileşenini oluştur
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        audioSource.volume = shootVolume;
+        audioSource.spatialBlend = 0f; // 2D ses
+        audioSource.outputAudioMixerGroup = null; // Doğrudan ses çıkışı
+        audioSource.bypassEffects = true; // Efektleri bypass et
+        audioSource.bypassListenerEffects = true; // Listener efektlerini bypass et
+        audioSource.bypassReverbZones = true; // Reverb bölgelerini bypass et
+        audioSource.dopplerLevel = 0f; // Doppler efektini kapat
+        audioSource.spread = 0f; // Ses yayılımını kapat
+        audioSource.priority = 128; // Normal öncelik
+        audioSource.mute = false; // Sesi aç
+        audioSource.loop = false; // Tekrarlamayı kapat
     }
 
     void UpdateTarget()
@@ -73,6 +95,13 @@ public class Turret2D : MonoBehaviour
         {
             bullet.direction = dir;
             bullet.owner = gameObject;
+        }
+
+        // Ateş etme sesini çal
+        if (shootSound != null && audioSource != null)
+        {
+            audioSource.pitch = Random.Range(minPitch, maxPitch);
+            audioSource.PlayOneShot(shootSound, shootVolume);
         }
     }
 

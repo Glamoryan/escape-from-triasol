@@ -8,6 +8,10 @@ public class UpgradeManager : MonoBehaviour
     public Button suitUpgradeButton;
     public Button turretUpgradeButton;
 
+    public AudioSource upgradeBulletSound;
+    public AudioSource upgradeSuitSound;
+    public AudioSource upgradeTurretSound;
+
     // Upgrade için gerekli item miktarları
     public int bulletUpgradeGear = 5;
     public int suitUpgradeBattery = 3;
@@ -84,8 +88,13 @@ public class UpgradeManager : MonoBehaviour
             if (playerShooting != null && upgradedBulletPrefab != null)
             {
                 playerShooting.bulletPrefab = upgradedBulletPrefab;
+                playerShooting.SetUpgraded(true);
                 bulletUpgradeCount++;
                 UpdateUpgradeCountTexts();
+                if (upgradeBulletSound != null)
+                {
+                    upgradeBulletSound.Play();
+                }
                 Debug.Log("Bullet upgrade başarılı!");
             }
         }
@@ -109,6 +118,10 @@ public class UpgradeManager : MonoBehaviour
                     health.currentHealth += suitHealthBonus;
                     suitUpgradeCount++;
                     UpdateUpgradeCountTexts();
+                    if (upgradeSuitSound != null)
+                    {
+                        upgradeSuitSound.Play();
+                    }
                     Debug.Log("Kıyafet upgrade başarılı!");
                 }
             }
@@ -142,6 +155,10 @@ public class UpgradeManager : MonoBehaviour
             }
             turretUpgradeCount++;
             UpdateUpgradeCountTexts();
+            if (upgradeTurretSound != null)
+            {
+                upgradeTurretSound.Play();
+            }
             Debug.Log("Tüm taretler upgrade edildi!");
         }
         else

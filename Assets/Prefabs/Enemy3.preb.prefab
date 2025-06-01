@@ -951,6 +951,10 @@ MonoBehaviour:
   maxShakeDistance: 10
   maxShakeIntensity: 0.5
   shakeDuration: 0.3
+  shootSound: {fileID: 8300000, guid: 6d647fd60b4b141859f7b93cc74e0d46, type: 3}
+  shootVolume: 0.3
+  minPitch: 1.2
+  maxPitch: 1.4
 --- !u!114 &-3608730806690452814
 MonoBehaviour:
   m_ObjectHideFlags: 0

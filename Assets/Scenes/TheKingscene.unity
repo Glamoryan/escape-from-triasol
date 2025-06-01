@@ -1642,7 +1642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7535573808585868570, guid: fec90dbc8a1cc448a89f31148c01909f, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Citizen
       objectReference: {fileID: 0}
     - target: {fileID: 7535573808585868570, guid: fec90dbc8a1cc448a89f31148c01909f, type: 3}
       propertyPath: m_Layer
@@ -1732,6 +1732,11 @@ MonoBehaviour:
   fireRate: 5
   range: 10
   enemyTag: Enemy
+  shootSound: {fileID: 8300000, guid: f0985792526df4f918bb5aae084ed561, type: 3}
+  upgradedShootSound: {fileID: 8300000, guid: 6d647fd60b4b141859f7b93cc74e0d46, type: 3}
+  shootVolume: 0.3
+  minPitch: 0.9
+  maxPitch: 1.1
 --- !u!114 &315884491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1986,6 +1991,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315928283}
   m_CullTransparentMesh: 1
+--- !u!1 &323504975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 323504977}
+  - component: {fileID: 323504976}
+  m_Layer: 0
+  m_Name: BackgroundMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &323504976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323504975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0961af60fe04d4180b2f786a6e1f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundMusic: {fileID: 8300000, guid: b9161f5f2a03a413c8eff46030de6ba0, type: 3}
+  volume: 0.5
+  playOnStart: 1
+  loop: 1
+--- !u!4 &323504977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323504975}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.972923, y: -1.3788974, z: 3.3629768}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &344798733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2903,6 +2956,9 @@ MonoBehaviour:
   delayBeforeRestart: 3
   solarFlareEffectPrefab: {fileID: 5147687130646384504, guid: 6281d347b73f042ca867832ac916b759, type: 3}
   solarFlareAnimator: {fileID: 0}
+  solarFlareSound: {fileID: 8300000, guid: 09137519be0724a0587d8c27007a833b, type: 3}
+  solarFlareVolume: 1
+  solarFlareSoundDelay: 3
 --- !u!4 &611219753
 Transform:
   m_ObjectHideFlags: 0
@@ -9989,3 +10045,4 @@ SceneRoots:
   - {fileID: 611219753}
   - {fileID: 1846590528}
   - {fileID: 1291319843}
+  - {fileID: 323504977}

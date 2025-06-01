@@ -40,8 +40,12 @@ public class GameOverManager : MonoBehaviour
     [Header("Solar Flare Effect")]
     public GameObject solarFlareEffectPrefab;
     public Animator solarFlareAnimator;
+    public AudioClip solarFlareSound;
+    public float solarFlareVolume = 1f;
+    public float solarFlareSoundDelay = 0.5f; // Efekt başladıktan sonra sesin çalması için beklenecek süre
 
     private bool isGameOver = false;
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -56,6 +60,21 @@ public class GameOverManager : MonoBehaviour
 
         if (gameOverCanvas != null)
             gameOverCanvas.gameObject.SetActive(false);
+
+        // AudioSource bileşenini oluştur
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        audioSource.volume = solarFlareVolume;
+        audioSource.spatialBlend = 0f; // 2D ses
+        audioSource.outputAudioMixerGroup = null; // Doğrudan ses çıkışı
+        audioSource.bypassEffects = true; // Efektleri bypass et
+        audioSource.bypassListenerEffects = true; // Listener efektlerini bypass et
+        audioSource.bypassReverbZones = true; // Reverb bölgelerini bypass et
+        audioSource.dopplerLevel = 0f; // Doppler efektini kapat
+        audioSource.spread = 0f; // Ses yayılımını kapat
+        audioSource.priority = 0; // En yüksek öncelik
+        audioSource.mute = false; // Sesi aç
+        audioSource.loop = false; // Tekrarlamayı kapat
     }
 
     void Start()
@@ -116,6 +135,15 @@ public class GameOverManager : MonoBehaviour
                 animator.SetTrigger("Play");
             }
 
+            // Ses çalmadan önce kısa bir bekleme
+            yield return new WaitForSeconds(solarFlareSoundDelay);
+
+            // Atom bombası sesini çal
+            if (solarFlareSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(solarFlareSound, solarFlareVolume);
+            }
+
             // Animasyonun tamamlanmasını bekle (animasyon süresi kadar)
             yield return new WaitForSeconds(1.5f);
         }
@@ -133,6 +161,12 @@ public class GameOverManager : MonoBehaviour
             if (canvas != null)
             {
                 canvas.sortingOrder = 200; // Solar flare'den daha yüksek
+            }
+
+            // Müziği fade out yap
+            if (BackgroundMusic.Instance != null)
+            {
+                BackgroundMusic.Instance.FadeOutAndStop(2f); // 2 saniyede fade out
             }
 
             gameOverCanvas.gameObject.SetActive(true);
@@ -182,6 +216,13 @@ public class GameOverManager : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f;
+        
+        // Müziği yeniden başlat
+        if (BackgroundMusic.Instance != null)
+        {
+            BackgroundMusic.Instance.PlayMusic();
+        }
+
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
         );
