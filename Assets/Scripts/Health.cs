@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+[RequireComponent(typeof(Animator))]
 
 public class Health : MonoBehaviour
 {
@@ -7,9 +8,10 @@ public class Health : MonoBehaviour
     public float currentHealth { get; set; }
 
     [Header("Otomatik Can Yenileme")]
-    public float regenDelay = 3f;        
-    public float regenRate = 10f;        
+    public float regenDelay = 3f;
+    public float regenRate = 10f;
     public bool canRegenerate = false;    // Varsayılan olarak can yenileme kapalı
+    public Animator animator;
 
     public event Action OnDeath;
     public event Action<float> OnHealthChanged;
@@ -57,7 +59,15 @@ public class Health : MonoBehaviour
             currentHealth = 0;
             OnHealthChanged?.Invoke(currentHealth);
             Die();
+            animator.SetTrigger("IsDead");
         }
+
+    }
+
+    public void DestroyPlayer()
+    {
+            Destroy(gameObject);
+
     }
 
     void Die()

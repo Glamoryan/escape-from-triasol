@@ -1,22 +1,24 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float sprintSpeed = 8f;
     public float energyCostPerSecond = 20f;
     public bool facingRight = true;
-
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
     private bool isSprinting;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -30,7 +32,6 @@ public class PlayerController : MonoBehaviour
             FlipCharacter(moveInput.x > 0);
         }
 
-        // Koşma kontrolü
         isSprinting = Input.GetKey(KeyCode.LeftShift) && moveInput != Vector2.zero;
         if (isSprinting && EnergyBar.Instance != null)
         {
@@ -40,6 +41,10 @@ public class PlayerController : MonoBehaviour
                 isSprinting = false;
             }
         }
+
+        float currentSpeed = isSprinting ? sprintSpeed : moveSpeed;
+        float speedForAnim = moveInput.magnitude * currentSpeed;
+        animator.SetFloat("Speed", speedForAnim);
     }
 
     void FixedUpdate()
@@ -52,18 +57,12 @@ public class PlayerController : MonoBehaviour
     {
         if (facingRight != faceRight)
         {
-            facingRight = faceRight;
-            
-            if (spriteRenderer != null)
-            {
-                spriteRenderer.flipX = !facingRight;
-            }
-            else
-            {
-                Vector3 scale = transform.localScale;
-                scale.x *= -1;
-                transform.localScale = scale;
-            }
+        facingRight = faceRight;
+
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * (facingRight ? 1 : -1);
+        transform.localScale = scale;
         }
     }
+
 }
