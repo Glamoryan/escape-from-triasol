@@ -215,6 +215,7 @@ public class GameOverManager : MonoBehaviour
     // Oyunu yeniden başlatmak için
     public void RestartGame()
     {
+        // Zaman ölçeğini normale döndür
         Time.timeScale = 1f;
         
         // Müziği yeniden başlat
@@ -223,6 +224,60 @@ public class GameOverManager : MonoBehaviour
             BackgroundMusic.Instance.PlayMusic();
         }
 
+        // Tüm düşmanları temizle
+        if (GameObject.FindGameObjectsWithTag("Enemy") != null)
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                Destroy(enemy);
+            }
+        }
+
+        // Tüm taretleri temizle
+        if (GameObject.FindGameObjectsWithTag("Structure") != null)
+        {
+            GameObject[] turrets = GameObject.FindGameObjectsWithTag("Structure");
+            foreach (GameObject turret in turrets)
+            {
+                Destroy(turret);
+            }
+        }
+
+        // Tüm mermileri temizle
+        var bullets = FindObjectsOfType<Bullet>();
+        foreach (var bullet in bullets)
+        {
+            Destroy(bullet.gameObject);
+        }
+
+        // Tüm itemleri temizle
+        if (GameObject.FindGameObjectsWithTag("Item") != null)
+        {
+            GameObject[] items = GameObject.FindGameObjectsWithTag("Item");
+            foreach (GameObject item in items)
+            {
+                Destroy(item);
+            }
+        }
+
+        // Yöneticileri sıfırla
+        if (EnemySpawnManager.Instance != null)
+        {
+            EnemySpawnManager.Instance.ResetManager();
+        }
+
+        if (ResourceManager.Instance != null)
+        {
+            ResourceManager.Instance.ResetResources();
+        }
+
+        if (UpgradeManager.Instance != null)
+        {
+            UpgradeManager.Instance.ResetUpgrades();
+        }
+
+        // Sahneyi yeniden yükle
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
         );

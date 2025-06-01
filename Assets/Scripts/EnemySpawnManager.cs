@@ -199,4 +199,32 @@ public class EnemySpawnManager : MonoBehaviour
         }
         Debug.Log("Tüm mermiler temizlendi!");
     }
+
+    public void ResetManager()
+    {
+        // Gün sayacını sıfırla
+        currentLevel = 1;
+        
+        // Zamanlayıcıları sıfırla
+        levelTimer = 0f;
+        restTimer = 0f;
+        
+        // Spawn noktalarını aktif et
+        foreach (Transform spawnPoint in transform)
+        {
+            spawnPoint.gameObject.SetActive(true);
+        }
+        
+        // Aktif coroutine'leri durdur
+        if (spawnRoutine != null)
+        {
+            StopCoroutine(spawnRoutine);
+        }
+        
+        // Yeni spawn rutinini başlat
+        StartCoroutine(InitialPreparation());
+        
+        // Gün değişikliğini bildir
+        OnDayChanged?.Invoke(currentLevel);
+    }
 }

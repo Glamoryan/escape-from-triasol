@@ -4,6 +4,8 @@ using TMPro;
 
 public class UpgradeManager : MonoBehaviour
 {
+    public static UpgradeManager Instance;
+
     public Button bulletUpgradeButton;
     public Button suitUpgradeButton;
     public Button turretUpgradeButton;
@@ -45,6 +47,18 @@ public class UpgradeManager : MonoBehaviour
 
     // Canvas Group referansı
     public CanvasGroup upgradeCanvasGroup;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -185,5 +199,31 @@ public class UpgradeManager : MonoBehaviour
             suitUpgradeCostText.text = "x" + suitUpgradeBattery;
         if (turretUpgradeCostText != null)
             turretUpgradeCostText.text = "x" + turretUpgradeIron;
+    }
+
+    public void ResetUpgrades()
+    {
+        // Tüm yükseltmeleri sıfırla
+        bulletUpgradeCount = 0;
+        suitUpgradeCount = 0;
+        turretUpgradeCount = 0;
+        
+        // UI'ı güncelle
+        UpdateUpgradeCountTexts();
+        UpdateUpgradeCostTexts();
+        
+        // Ses kaynağını sıfırla
+        if (upgradeBulletSound != null)
+        {
+            upgradeBulletSound.Stop();
+        }
+        if (upgradeSuitSound != null)
+        {
+            upgradeSuitSound.Stop();
+        }
+        if (upgradeTurretSound != null)
+        {
+            upgradeTurretSound.Stop();
+        }
     }
 } 

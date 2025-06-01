@@ -4874,7 +4874,7 @@ MonoBehaviour:
   solarFlareEffectPrefab: {fileID: 5147687130646384504, guid: 6281d347b73f042ca867832ac916b759, type: 3}
   solarFlareAnimator: {fileID: 0}
   solarFlareSound: {fileID: 8300000, guid: 09137519be0724a0587d8c27007a833b, type: 3}
-  solarFlareVolume: 1
+  solarFlareVolume: 2
   solarFlareSoundDelay: 3
 --- !u!4 &1054914578
 Transform:
@@ -8632,9 +8632,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9fa1f204a4a4872b4e68ff3ae01794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 300
-  regenDelay: 3
-  regenRate: 10
+  maxHealth: 400
+  regenDelay: 1
+  regenRate: 6
   canRegenerate: 1
   animator: {fileID: 0}
 --- !u!114 &1981229265
